@@ -1,19 +1,32 @@
 import React from "react";
 import styled from "@emotion/styled";
-import { Button } from "@mui/material";
+import { createTheme, ThemeProvider } from "@mui/material";
 
-const Title = styled.h2`
-  font-size: 2rem;
-`;
+import Header from "../components/common/Header";
+import Intro from "../components/common/Intro";
+import PostList from "../components/common/PostList";
+import CategoryList from "../components/common/CategoryList";
+import Profile from "../components/common/Profile";
+import Footer from "../components/common/Footer";
+
+const theme = createTheme({
+  typography: {
+    fontFamily: `Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto,
+    "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR",
+    "Malgun Gothic", sans-serif`,
+  },
+});
 
 const IndexPage = () => {
   return (
-    <>
-      <Title>pretendard 프리텐다드</Title>
-      <p>p태그</p>
-      <h1>h1 태그</h1>
-      <Button variant="contained">Hello World</Button>
-    </>
+    <ThemeProvider theme={theme}>
+      <Header />
+      <Intro />
+      <PostList />
+      <CategoryList />
+      <Profile />
+      <Footer />
+    </ThemeProvider>
   );
 };
 
