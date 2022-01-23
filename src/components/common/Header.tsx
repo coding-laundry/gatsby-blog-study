@@ -1,6 +1,5 @@
 import React from "react";
 
-import { styled } from "@mui/material/styles";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -26,9 +25,7 @@ const Header = () => {
           <Toolbar>
             <IconButton
               edge="start"
-              color="inherit"
-              aria-label="open drawer"
-              sx={{ mr: 2 }}
+              aria-label="메뉴 열기"
               onClick={onClickMenu}
             >
               <MenuIcon sx={{ fontSize: 32 }} />
@@ -41,11 +38,7 @@ const Header = () => {
             >
               My Gatsby Blog
             </Typography>
-            <IconButton
-              aria-label="search"
-              color="inherit"
-              onClick={onClickSearch}
-            >
+            <IconButton aria-label="검색하기" onClick={onClickSearch}>
               <SearchIcon sx={{ fontSize: 32 }} />
             </IconButton>
           </Toolbar>
