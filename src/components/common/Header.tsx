@@ -31,9 +31,9 @@ const Header = () => {
               <MenuIcon sx={{ fontSize: 32 }} />
             </IconButton>
             <Typography
+              component="h2"
               variant="h5"
               noWrap
-              component="h3"
               sx={{ flexGrow: 1, textAlign: "center", fontWeight: "bold" }}
             >
               My Gatsby Blog

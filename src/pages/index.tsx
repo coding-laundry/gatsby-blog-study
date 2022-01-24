@@ -1,5 +1,4 @@
 import React from "react";
-import styled from "@emotion/styled";
 import { createTheme, ThemeProvider } from "@mui/material";
 
 import Header from "../components/common/Header";
@@ -22,8 +21,10 @@ const IndexPage = () => {
     <ThemeProvider theme={theme}>
       <Header />
       <Intro />
-      <PostList />
-      <CategoryList />
+      <>
+        <PostList />
+        <CategoryList />
+      </>
       <Profile />
       <Footer />
     </ThemeProvider>
