@@ -32,7 +32,7 @@ const Header = () => {
             </IconButton>
             <Typography
               component="h2"
-              variant="h5"
+              variant="h6"
               noWrap
               sx={{ flexGrow: 1, textAlign: "center", fontWeight: "bold" }}
             >
