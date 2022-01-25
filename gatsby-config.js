@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
     title: `My Gatsby Site`,
-    siteUrl: `https://www.yourdomain.tld`,
+    siteUrl: `https://gatsbyblogstudymain.gatsbyjs.io/`,
   },
   plugins: [
     "gatsby-plugin-emotion",
@@ -27,6 +27,14 @@ module.exports = {
         path: "./src/pages/",
       },
       __key: "pages",
+    },
+    {
+      resolve: "gatsby-source-filesystem",
+      options: {
+        name: "blog",
+        path: "./content/blog",
+      },
+      __key: "blogs",
     },
   ],
 };
