@@ -3,12 +3,13 @@ import { createTheme, ThemeProvider } from "@mui/material";
 
 import Header from "../components/common/Header";
 import Intro from "../components/common/Intro";
-import PostList from "../components/common/PostList";
+import PostList from "../components/post/PostList";
 import CategoryList from "../components/common/CategoryList";
 import Profile from "../components/common/Profile";
 import Footer from "../components/common/Footer";
 import { graphql } from "gatsby";
 import { AllMarkdown } from "../types/postTypes";
+import { Container } from "@mui/material";
 
 const theme = createTheme({
   typography: {
@@ -24,17 +25,16 @@ type IndexPageProps = {
 
 const IndexPage = ({ data }: IndexPageProps) => {
   const { edges: posts } = data.allMdx;
-  console.log(data.allMdx.edges);
 
   return (
     <ThemeProvider theme={theme}>
       <Header />
       <Intro />
 
-      <main>
+      <Container>
         <PostList posts={posts} />
         <CategoryList />
-      </main>
+      </Container>
 
       <Profile />
       <Footer />
@@ -51,7 +51,7 @@ export const query = graphql`
         node {
           frontmatter {
             title
-            tag
+            tags
             date
             category
             thumbnail {

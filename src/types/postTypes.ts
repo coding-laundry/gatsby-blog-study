@@ -9,7 +9,7 @@ export type GatsbyThumbnail = {
 
 export type PostFrontmatter = {
   title: string;
-  tag: string[];
+  tags: string[];
   date: string;
   category: string;
   thumbnail: GatsbyThumbnail;
