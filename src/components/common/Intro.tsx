@@ -3,7 +3,6 @@ import {
   Container,
   Divider,
   Grow,
-  Paper,
   styled,
   Typography,
 } from "@mui/material";

@@ -1,7 +1,13 @@
 import React from "react";
+import { PostNode } from "../../types/postTypes";
 
-const PostList = () => {
-  return <div>postList</div>;
+type PostListProps = {
+  posts: { node: PostNode }[];
+};
+
+const PostList = ({ posts }: PostListProps) => {
+  console.log("posts", posts);
+  return <>postList</>;
 };
 
 export default PostList;
