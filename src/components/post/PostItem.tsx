@@ -1,4 +1,5 @@
 import { Card, Typography, CardContent, styled, Box } from "@mui/material";
+import { navigate } from "gatsby";
 import { Link } from "gatsby";
 import { GatsbyImage } from "gatsby-plugin-image";
 import React from "react";
@@ -10,6 +11,18 @@ const HoverCard = styled(Card)`
 
   &:hover {
     transform: scale(1.01);
+    box-shadow: 6px 6px 0 0 rgba(0, 0, 0, 0.12);
+  }
+`;
+
+const Category = styled(Typography)`
+  display: inline-block;
+  padding: 5px;
+  margin-left: -5px;
+  border-radius: 10px;
+
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.12);
   }
 `;
 
@@ -43,14 +56,32 @@ type PostItemProps = {
 const PostItem = ({ post }: PostItemProps) => {
   const { title, date, tags, category, thumbnail } = post.frontmatter;
 
+  const onClickCategory = (e: React.MouseEvent) => {
+    const { textContent } = e.target as HTMLElement;
+    navigate(`/category/${textContent.toLowerCase()}`);
+  };
+
+  const onClickLink = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    const { classList } = e.target as HTMLElement;
+
+    if (classList.contains("category")) {
+      e.preventDefault();
+    }
+  };
+
   return (
-    <Link to={`blog/${post.slug}`}>
+    <Link to={`blog/${post.slug}`} onClick={onClickLink}>
       <HoverCard variant="outlined">
         <CardFlexContent>
           <Box>
-            <Typography variant="subtitle1" color="primary">
+            <Category
+              className="category"
+              variant="subtitle1"
+              color="primary"
+              onClick={onClickCategory}
+            >
               {category.toUpperCase()}
-            </Typography>
+            </Category>
             <Title variant="h5">{title}</Title>
             <Typography variant="caption">{date}</Typography>
             <Typography variant="body2" color="text.secondary">

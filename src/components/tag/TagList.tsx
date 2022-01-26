@@ -8,7 +8,6 @@ type TagList = {
 };
 
 const TagList = ({ tags }: TagList) => {
-  console.log("tags", tags);
   return (
     <Stack direction="row" spacing={1} mt={2}>
       {tags.map((tag) => (
