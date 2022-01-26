@@ -1,19 +1,21 @@
-import {
-  Card,
-  Typography,
-  CardContent,
-  styled,
-  CardActionArea,
-  CardActions,
-} from "@mui/material";
+import { Card, Typography, CardContent, styled, Box } from "@mui/material";
+import { GatsbyImage } from "gatsby-plugin-image";
 import React from "react";
 import { PostNode } from "../../types/postTypes";
-import TagItem from "../tag/TagItem";
 import TagList from "../tag/TagList";
 
 const Title = styled(Typography)`
   font-weight: 600;
-  margin-bottom: 0.5rem;
+`;
+
+const CardFlexContent = styled(CardContent)`
+  display: flex;
+  justify-content: space-between;
+`;
+
+const CardThumbnail = styled(GatsbyImage)`
+  width: 22%;
+  border-radius: 5px;
 `;
 
 type PostItemProps = {
@@ -24,17 +26,24 @@ const PostItem = ({ post }: PostItemProps) => {
   const { title, date, tags, category, thumbnail } = post.frontmatter;
 
   return (
-    <Card>
-      <CardContent>
-        <Typography variant="subtitle1" color="primary">
-          {category.toUpperCase()}
-        </Typography>
-        <Title variant="h5">{title}</Title>
-        <Typography variant="body2" color="text.secondary">
-          {post.excerpt}
-        </Typography>
-        <TagList tags={tags} />
-      </CardContent>
+    <Card variant="outlined">
+      <CardFlexContent>
+        <Box>
+          <Typography variant="subtitle1" color="primary">
+            {category.toUpperCase()}
+          </Typography>
+          <Title variant="h5">{title}</Title>
+          <Typography variant="caption">{date}</Typography>
+          <Typography variant="body2" color="text.secondary">
+            {post.excerpt}
+          </Typography>
+          <TagList tags={tags} />
+        </Box>
+        <CardThumbnail
+          image={thumbnail.childImageSharp.gatsbyImageData}
+          alt={`${title} thumbnail`}
+        />
+      </CardFlexContent>
     </Card>
   );
 };

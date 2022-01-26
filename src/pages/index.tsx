@@ -62,7 +62,7 @@ export const query = graphql`
             }
           }
           slug
-          excerpt
+          excerpt(pruneLength: 64)
           id
         }
       }
