@@ -11,11 +11,20 @@ const Title = styled(Typography)`
 const CardFlexContent = styled(CardContent)`
   display: flex;
   justify-content: space-between;
+  gap: 5px;
+
+  @media (max-width: 700px) {
+    flex-direction: column-reverse;
+  }
 `;
 
 const CardThumbnail = styled(GatsbyImage)`
-  width: 22%;
+  width: 200px;
   border-radius: 5px;
+
+  @media (max-width: 700px) {
+    width: 100%;
+  }
 `;
 
 type PostItemProps = {
