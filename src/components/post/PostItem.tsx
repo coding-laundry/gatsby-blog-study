@@ -17,9 +17,10 @@ const HoverCard = styled(Card)`
 
 const Category = styled(Typography)`
   display: inline-block;
-  padding: 5px;
+  padding: 3px 5px;
   margin-left: -5px;
-  border-radius: 10px;
+  border-radius: 15px;
+  transition: background-color 0.3s;
 
   &:hover {
     background-color: rgba(0, 0, 0, 0.12);
@@ -56,15 +57,14 @@ type PostItemProps = {
 const PostItem = ({ post }: PostItemProps) => {
   const { title, date, tags, category, thumbnail } = post.frontmatter;
 
-  const onClickCategory = (e: React.MouseEvent) => {
+  const onClickCategory = (e: React.MouseEvent<HTMLElement>) => {
     const { textContent } = e.target as HTMLElement;
     navigate(`/category/${textContent.toLowerCase()}`);
   };
 
   const onClickLink = (e: React.MouseEvent<HTMLAnchorElement>) => {
     const { classList } = e.target as HTMLElement;
-
-    if (classList.contains("category")) {
+    if (classList.contains("category") || classList.contains("MuiChip-label")) {
       e.preventDefault();
     }
   };
