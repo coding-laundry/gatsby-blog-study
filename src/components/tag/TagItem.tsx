@@ -1,4 +1,5 @@
 import { Chip } from "@mui/material";
+import { navigate } from "gatsby";
 import React from "react";
 
 type TagItemProps = {
@@ -6,13 +7,12 @@ type TagItemProps = {
 };
 
 const TagItem = ({ name }: TagItemProps) => {
+  const onClickTagItem = () => {
+    navigate(`tags/${name}`);
+  };
+
   return (
-    <Chip
-      label={name}
-      variant="filled"
-      size="small"
-      onClick={() => console.log("name", name)}
-    />
+    <Chip label={name} variant="filled" size="small" onClick={onClickTagItem} />
   );
 };
 
