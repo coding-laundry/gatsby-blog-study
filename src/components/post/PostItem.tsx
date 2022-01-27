@@ -36,7 +36,7 @@ const CardFlexContent = styled(CardContent)`
   justify-content: space-between;
   gap: 5px;
 
-  @media (max-width: 700px) {
+  @media (max-width: 600px) {
     flex-direction: column-reverse;
   }
 `;
@@ -45,7 +45,7 @@ const CardThumbnail = styled(GatsbyImage)`
   width: 200px;
   border-radius: 5px;
 
-  @media (max-width: 700px) {
+  @media (max-width: 600px) {
     width: 100%;
   }
 `;

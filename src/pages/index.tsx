@@ -1,5 +1,5 @@
 import React from "react";
-import { createTheme, ThemeProvider } from "@mui/material";
+import { createTheme, Grid, ThemeProvider } from "@mui/material";
 
 import Header from "../components/common/Header";
 import Intro from "../components/common/Intro";
@@ -32,8 +32,14 @@ const IndexPage = ({ data }: IndexPageProps) => {
       <Intro />
 
       <Container>
-        <PostList posts={posts} />
-        <CategoryList />
+        <Grid container spacing={2}>
+          <Grid item sm={9}>
+            <PostList posts={posts} />
+          </Grid>
+          <Grid item sm={3}>
+            <CategoryList />
+          </Grid>
+        </Grid>
       </Container>
 
       <Profile />
