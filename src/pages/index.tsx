@@ -4,7 +4,7 @@ import { createTheme, Grid, ThemeProvider } from "@mui/material";
 import Header from "../components/common/Header";
 import Intro from "../components/common/Intro";
 import PostList from "../components/post/PostList";
-import CategoryList from "../components/common/CategoryList";
+import CategoryList from "../components/category/CategoryList";
 import Profile from "../components/common/Profile";
 import Footer from "../components/common/Footer";
 import { graphql } from "gatsby";
