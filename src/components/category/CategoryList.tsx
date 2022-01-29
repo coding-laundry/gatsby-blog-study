@@ -1,5 +1,5 @@
 import { Card, CardHeader, List } from "@mui/material";
-import { graphql, useStaticQuery } from "gatsby";
+import { graphql, Link, useStaticQuery } from "gatsby";
 import React from "react";
 import CategoryItem from "./CategoryItem";
 import { PostFrontmatter } from "../../types/postTypes";
@@ -44,7 +44,9 @@ const CategoryList = ({ currentCategory = "" }: CategoryListProps) => {
 
   return (
     <Card variant="outlined">
-      <CardHeader subheader="CATEGORY" />
+      <Link to="/category">
+        <CardHeader subheader="CATEGORY" />
+      </Link>
       <List>
         {Object.entries(categoryHash).map(([key, value]) => (
           <CategoryItem

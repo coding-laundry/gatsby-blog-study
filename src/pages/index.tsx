@@ -10,6 +10,7 @@ import Footer from "../components/common/Footer";
 import { graphql } from "gatsby";
 import { AllMarkdown } from "../types/postTypes";
 import { Container } from "@mui/material";
+import styled from "@emotion/styled";
 
 const theme = createTheme({
   typography: {
@@ -18,6 +19,12 @@ const theme = createTheme({
     "Malgun Gothic", sans-serif`,
   },
 });
+
+const HiddenGrid = styled(Grid)`
+  @media (max-width: 600px) {
+    display: none;
+  }
+`;
 
 type IndexPageProps = {
   data: AllMarkdown;
@@ -36,13 +43,16 @@ const IndexPage = ({ data }: IndexPageProps) => {
           <Grid item sm={9}>
             <PostList posts={posts} />
           </Grid>
-          <Grid item sm={3}>
+          <HiddenGrid item sm={3}>
             <CategoryList />
-          </Grid>
+          </HiddenGrid>
         </Grid>
       </Container>
 
-      <Profile />
+      <Container>
+        <Profile />
+      </Container>
+
       <Footer />
     </ThemeProvider>
   );
