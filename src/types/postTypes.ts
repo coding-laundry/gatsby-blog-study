@@ -4,7 +4,7 @@ export type GatsbyThumbnail = {
   childImageSharp: {
     gatsbyImageData: IGatsbyImageData;
   };
-  publicURL: string;
+  publicURL?: string;
 };
 
 export type PostFrontmatter = {
