@@ -7,7 +7,17 @@ import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import MenuIcon from "@mui/icons-material/Menu";
 import SearchIcon from "@mui/icons-material/Search";
-import { Container } from "@mui/material";
+import { Container, Slide, useScrollTrigger } from "@mui/material";
+
+const HideOnScroll = ({ children }) => {
+  const trigger = useScrollTrigger();
+
+  return (
+    <Slide appear={false} direction="down" in={!trigger}>
+      {children}
+    </Slide>
+  );
+};
 
 const Header = () => {
   const onClickMenu = () => {
@@ -19,8 +29,8 @@ const Header = () => {
   };
 
   return (
-    <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="sticky" color="inherit" sx={{ boxShadow: 0 }}>
+    <HideOnScroll>
+      <AppBar position="sticky" color="inherit" elevation={0}>
         <Container>
           <Toolbar>
             <IconButton
@@ -44,7 +54,7 @@ const Header = () => {
           </Toolbar>
         </Container>
       </AppBar>
-    </Box>
+    </HideOnScroll>
   );
 };
 
