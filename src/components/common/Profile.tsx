@@ -2,13 +2,13 @@ import styled from "@emotion/styled";
 import { Box, IconButton, Stack, Typography } from "@mui/material";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
-import { graphql, useStaticQuery } from "gatsby";
+import { graphql, Link, useStaticQuery } from "gatsby";
 import { GatsbyImage } from "gatsby-plugin-image";
 import React from "react";
 import { GatsbyThumbnail } from "../../types/postTypes";
 
 const ProfileStack = styled(Stack)`
-  margin-top: 15px;
+  margin: 25px 0;
   padding: 15px;
 `;
 
@@ -38,7 +38,7 @@ const Profile = () => {
       file(name: { eq: "icon" }) {
         name
         childImageSharp {
-          gatsbyImageData(width: 120)
+          gatsbyImageData(width: 100)
         }
       }
     }
@@ -51,16 +51,22 @@ const Profile = () => {
         alt="Profile"
       />
       <Box>
-        <ProfileName variant="h6" color="info">
-          @Caesiumy
-        </ProfileName>
+        <Link to="/about">
+          <ProfileName variant="h6" color="info">
+            @Caesiumy
+          </ProfileName>
+        </Link>
         <Typography variant="body1">This is Profile info body text</Typography>
 
         <Stack direction="row">
-          <IconButton aria-label="github" color="secondary">
+          <IconButton href="https://github.com/CaesiumY" aria-label="github">
             <GitHubIcon />
           </IconButton>
-          <IconButton aria-label="linkedin" color="primary">
+          <IconButton
+            href="https://www.linkedin.com/in/chang-sik-yoon/"
+            aria-label="linkedin"
+            color="primary"
+          >
             <LinkedInIcon />
           </IconButton>
         </Stack>
