@@ -13,8 +13,9 @@ const CategoryItem = ({
   count,
   isSelected = false,
 }: CategoryItemProps) => {
+  const linkSeparator = name === "all" ? "/" : `/category/${name}`;
   return (
-    <Link to={`/category/${name}`}>
+    <Link to={linkSeparator}>
       <ListItem disablePadding secondaryAction={count}>
         <ListItemButton selected={isSelected}>
           <ListItemText primary={`${name.toUpperCase()}`} />

@@ -36,10 +36,11 @@ const CategoryList = ({ currentCategory = "" }: CategoryListProps) => {
   const categoryHash: CategoryHashType = data.allMdx.nodes.reduce(
     (acc, { frontmatter }) => {
       const { category } = frontmatter;
+      acc["all"] += 1;
       acc[category] ? (acc[category] += 1) : (acc[category] = 1);
       return acc;
     },
-    {}
+    { all: 0 }
   );
 
   return (
