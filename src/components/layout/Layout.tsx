@@ -12,7 +12,11 @@ const theme = createTheme({
   },
 });
 
-const Layout = ({ children }) => {
+type LayoutProps = {
+  children: React.ReactNode;
+};
+
+const Layout = ({ children }: LayoutProps) => {
   return (
     <ThemeProvider theme={theme}>
       <Header />

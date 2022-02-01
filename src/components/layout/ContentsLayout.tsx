@@ -9,7 +9,11 @@ const HiddenGrid = styled(Grid)`
   }
 `;
 
-const ContentsLayout = ({ children }) => {
+type ContentsLayoutProps = {
+  children: React.ReactNode;
+};
+
+const ContentsLayout = ({ children }: ContentsLayoutProps) => {
   return (
     <Container>
       <Grid container spacing={2}>
