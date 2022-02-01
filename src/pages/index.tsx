@@ -11,6 +11,8 @@ import { graphql } from "gatsby";
 import { AllMarkdown } from "../types/postTypes";
 import { Container } from "@mui/material";
 import styled from "@emotion/styled";
+import Layout from "../components/layout/Layout";
+import ContentsLayout from "../components/layout/ContentsLayout";
 
 const theme = createTheme({
   typography: {
@@ -34,27 +36,13 @@ const IndexPage = ({ data }: IndexPageProps) => {
   const { edges: posts } = data.allMdx;
 
   return (
-    <ThemeProvider theme={theme}>
-      <Header />
+    <Layout>
       <Intro />
 
-      <Container>
-        <Grid container spacing={2}>
-          <Grid item sm={9}>
-            <PostList posts={posts} />
-          </Grid>
-          <HiddenGrid item sm={3}>
-            <CategoryList />
-          </HiddenGrid>
-        </Grid>
-      </Container>
-
-      <Container>
-        <Profile />
-      </Container>
-
-      <Footer />
-    </ThemeProvider>
+      <ContentsLayout>
+        <PostList posts={posts} />
+      </ContentsLayout>
+    </Layout>
   );
 };
 
