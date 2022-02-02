@@ -1,8 +1,7 @@
+const metaData = require("./gatsby-meta-config");
+
 module.exports = {
-  siteMetadata: {
-    title: `My Gatsby Site`,
-    siteUrl: `https://gatsbyblogstudymain.gatsbyjs.io/`,
-  },
+  siteMetadata: metaData,
   plugins: [
     "gatsby-plugin-emotion",
     "gatsby-plugin-image",
