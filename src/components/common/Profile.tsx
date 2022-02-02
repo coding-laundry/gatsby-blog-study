@@ -26,14 +26,24 @@ const ProfileName = styled(Typography)`
   }
 `;
 
-type ProfileImageQuery = {
+type ProfileDataQuery = {
   file: {
     name: string;
   } & GatsbyThumbnail;
+  site: {
+    siteMetadata: {
+      description: string;
+      author: string;
+      social: {
+        github: string;
+        linkedIn: string;
+      };
+    };
+  };
 };
 
 const Profile = () => {
-  const data = useStaticQuery<ProfileImageQuery>(graphql`
+  const { file, site } = useStaticQuery<ProfileDataQuery>(graphql`
     query {
       file(name: { eq: "icon" }) {
         name
@@ -41,34 +51,50 @@ const Profile = () => {
           gatsbyImageData(width: 100)
         }
       }
+      site {
+        siteMetadata {
+          description
+          author
+          social {
+            github
+            linkedIn
+          }
+        }
+      }
     }
   `);
 
+  const { author, description, social } = site.siteMetadata;
+
   return (
     <ProfileStack spacing={3} direction="row">
-      <GatsbyImage
-        image={data.file.childImageSharp.gatsbyImageData}
-        alt="Profile"
-      />
+      <GatsbyImage image={file.childImageSharp.gatsbyImageData} alt="Profile" />
       <Box>
         <Link to="/about">
           <ProfileName variant="h6" color="info">
-            @Caesiumy
+            @{author}
           </ProfileName>
         </Link>
-        <Typography variant="body1">This is Profile info body text</Typography>
+        <Typography variant="body1">{description}</Typography>
 
         <Stack direction="row">
-          <IconButton href="https://github.com/CaesiumY" aria-label="github">
-            <GitHubIcon />
-          </IconButton>
-          <IconButton
-            href="https://www.linkedin.com/in/chang-sik-yoon/"
-            aria-label="linkedin"
-            color="primary"
-          >
-            <LinkedInIcon />
-          </IconButton>
+          {social.github && (
+            <IconButton
+              href={`https://github.com/${social.github}`}
+              aria-label="github"
+            >
+              <GitHubIcon />
+            </IconButton>
+          )}
+          {social.linkedIn && (
+            <IconButton
+              href={social.linkedIn}
+              aria-label="linkedin"
+              color="primary"
+            >
+              <LinkedInIcon />
+            </IconButton>
+          )}
         </Stack>
       </Box>
     </ProfileStack>
