@@ -1,6 +1,6 @@
 import { Card, CardHeader, List } from "@mui/material";
 import { graphql, Link, useStaticQuery } from "gatsby";
-import React from "react";
+import React, { useMemo } from "react";
 import CategoryItem from "./CategoryItem";
 import { PostFrontmatter } from "../../types/postTypes";
 
@@ -33,14 +33,18 @@ const CategoryList = ({ currentCategory = "" }: CategoryListProps) => {
     }
   `);
 
-  const categoryHash: CategoryHashType = data.allMdx.nodes.reduce(
-    (acc, { frontmatter }) => {
-      const { category } = frontmatter;
-      acc["all"] += 1;
-      acc[category] ? (acc[category] += 1) : (acc[category] = 1);
-      return acc;
-    },
-    { all: 0 }
+  const categoryHash: CategoryHashType = useMemo(
+    () =>
+      data.allMdx.nodes.reduce(
+        (acc, { frontmatter }) => {
+          const { category } = frontmatter;
+          acc["all"] += 1;
+          acc[category] ? (acc[category] += 1) : (acc[category] = 1);
+          return acc;
+        },
+        { all: 0 }
+      ),
+    []
   );
 
   return (
