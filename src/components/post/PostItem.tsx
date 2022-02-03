@@ -4,7 +4,7 @@ import { Link } from "gatsby";
 import { GatsbyImage } from "gatsby-plugin-image";
 import React from "react";
 import { PostNode } from "../../types/postTypes";
-import TagList from "../tag/TagList";
+import Tags from "../tag/Tags";
 
 const HoverCard = styled(Card)`
   transition: transform 0.2s ease-in-out;
@@ -87,7 +87,7 @@ const PostItem = ({ post }: PostItemProps) => {
             <Typography variant="body2" color="text.secondary">
               {post.excerpt}
             </Typography>
-            <TagList tags={tags} />
+            <Tags tags={tags} />
           </Box>
           <CardThumbnail
             image={thumbnail.childImageSharp.gatsbyImageData}

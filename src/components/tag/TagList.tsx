@@ -1,19 +1,62 @@
-import { Box } from "@mui/material";
-import { Stack } from "@mui/material";
-import React from "react";
+import styled from "@emotion/styled";
+import { Box, Card, CardContent, CardHeader } from "@mui/material";
+import { graphql, Link, useStaticQuery } from "gatsby";
+import React, { useMemo } from "react";
 import TagItem from "./TagItem";
+import { PostFrontmatter } from "../../types/postTypes";
 
-type TagList = {
-  tags: string[];
+const TagWrapper = styled(Box)`
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+`;
+
+type TagListQuery = {
+  allMdx: {
+    nodes: {
+      frontmatter: Pick<PostFrontmatter, "tags">;
+    }[];
+  };
 };
 
-const TagList = ({ tags }: TagList) => {
+const TagList = () => {
+  const data = useStaticQuery<TagListQuery>(graphql`
+    query {
+      allMdx {
+        nodes {
+          frontmatter {
+            tags
+          }
+        }
+      }
+    }
+  `);
+
+  const tags = useMemo(
+    () =>
+      data.allMdx.nodes.reduce((acc, cur) => {
+        const { tags } = cur.frontmatter;
+        tags.forEach((tag) => {
+          acc.add(tag);
+        });
+        return acc;
+      }, new Set<string>([])),
+    []
+  );
+
   return (
-    <Stack direction="row" spacing={1} mt={2}>
-      {tags.map((tag) => (
-        <TagItem key={tag} name={tag} />
-      ))}
-    </Stack>
+    <Card variant="outlined">
+      <Link to="/tags">
+        <CardHeader subheader="TAGS" />
+      </Link>
+      <CardContent>
+        <TagWrapper>
+          {[...tags].slice(0, 15).map((tag) => (
+            <TagItem key={tag} name={tag} />
+          ))}
+        </TagWrapper>
+      </CardContent>
+    </Card>
   );
 };
 
