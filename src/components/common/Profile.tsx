@@ -8,8 +8,15 @@ import React from "react";
 import { GatsbyThumbnail } from "../../types/postTypes";
 
 const ProfileStack = styled(Stack)`
-  margin: 25px 0;
+  margin: 15px 0;
   padding: 15px;
+`;
+
+const ProfileImage = styled(GatsbyImage)`
+  min-width: 100px;
+  width: 100px;
+  margin: ${({ direction }: ProfileImageProps) =>
+    direction === "column" ? "0 auto" : "0"};
 `;
 
 const ProfileName = styled(Typography)`
@@ -25,6 +32,8 @@ const ProfileName = styled(Typography)`
     transform: scale(1.1);
   }
 `;
+
+type ProfileImageProps = { direction: string };
 
 type ProfileDataQuery = {
   file: {
@@ -52,7 +61,7 @@ const Profile = ({ direction = "row" }: ProfileProps) => {
       file(name: { eq: "icon" }) {
         name
         childImageSharp {
-          gatsbyImageData(width: 100)
+          gatsbyImageData
         }
       }
       site {
@@ -72,7 +81,11 @@ const Profile = ({ direction = "row" }: ProfileProps) => {
 
   return (
     <ProfileStack spacing={3} direction={direction}>
-      <GatsbyImage image={file.childImageSharp.gatsbyImageData} alt="Profile" />
+      <ProfileImage
+        image={file.childImageSharp.gatsbyImageData}
+        alt="Profile"
+        direction={direction}
+      />
       <Box>
         <Link to="/about">
           <ProfileName variant="h6" color="info">
@@ -80,10 +93,13 @@ const Profile = ({ direction = "row" }: ProfileProps) => {
           </ProfileName>
         </Link>
         <Typography variant="body1">
-          {description}lorem ipsum dolor sit amet, consectetur adip
+          {description} lorem ipsum dolor sit amet, consectetur adip
         </Typography>
 
-        <Stack direction="row">
+        <Stack
+          direction="row"
+          justifyContent={direction === "column" && "center"}
+        >
           {social.github && (
             <IconButton
               href={`https://github.com/${social.github}`}

@@ -22,6 +22,10 @@ const MenuBox = styled(Box)`
   width: 300px;
 `;
 
+const ProfileListItem = styled(ListItem)`
+  text-align: center;
+`;
+
 type MenuDrawerProps = {
   isOpen: boolean;
   onCloseDrawer: () => void;
@@ -44,9 +48,9 @@ const MenuDrawer = ({ isOpen, onCloseDrawer }: MenuDrawerProps) => {
     <Drawer open={isOpen} onClose={onCloseDrawer}>
       <MenuBox>
         <List>
-          <ListItem disablePadding>
+          <ProfileListItem disablePadding>
             <Profile direction="column" />
-          </ListItem>
+          </ProfileListItem>
           <Divider />
           {Object.keys(listTable).map((key) => (
             <Link to={`/${key === "home" ? "" : key}`} key={key}>
