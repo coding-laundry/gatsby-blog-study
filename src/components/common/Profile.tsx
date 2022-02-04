@@ -42,7 +42,11 @@ type ProfileDataQuery = {
   };
 };
 
-const Profile = () => {
+type ProfileProps = {
+  direction?: "row" | "row-reverse" | "column" | "column-reverse";
+};
+
+const Profile = ({ direction = "row" }: ProfileProps) => {
   const { file, site } = useStaticQuery<ProfileDataQuery>(graphql`
     query {
       file(name: { eq: "icon" }) {
@@ -67,7 +71,7 @@ const Profile = () => {
   const { author, description, social } = site.siteMetadata;
 
   return (
-    <ProfileStack spacing={3} direction="row">
+    <ProfileStack spacing={3} direction={direction}>
       <GatsbyImage image={file.childImageSharp.gatsbyImageData} alt="Profile" />
       <Box>
         <Link to="/about">
@@ -75,7 +79,9 @@ const Profile = () => {
             @{author}
           </ProfileName>
         </Link>
-        <Typography variant="body1">{description}</Typography>
+        <Typography variant="body1">
+          {description}lorem ipsum dolor sit amet, consectetur adip
+        </Typography>
 
         <Stack direction="row">
           {social.github && (
