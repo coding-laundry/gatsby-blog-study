@@ -44,6 +44,11 @@ const CardFlexContent = styled(CardContent)`
 const CardThumbnail = styled(GatsbyImage)`
   width: 200px;
   border-radius: 5px;
+  transition: transform 0.2s ease-in-out;
+
+  .MuiPaper-root:hover & {
+    transform: scale(1.02);
+  }
 
   @media (max-width: 600px) {
     width: 100%;
@@ -89,10 +94,12 @@ const PostItem = ({ post }: PostItemProps) => {
             </Typography>
             <Tags tags={tags} />
           </Box>
-          <CardThumbnail
-            image={thumbnail.childImageSharp.gatsbyImageData}
-            alt={`${title} thumbnail`}
-          />
+          {thumbnail && (
+            <CardThumbnail
+              image={thumbnail.childImageSharp.gatsbyImageData}
+              alt={`${title} thumbnail`}
+            />
+          )}
         </CardFlexContent>
       </HoverCard>
     </Link>
