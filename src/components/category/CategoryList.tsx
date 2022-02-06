@@ -5,7 +5,7 @@ import CategoryItem from "./CategoryItem";
 import { PostFrontmatter } from "../../types/postTypes";
 
 type CategoryListProps = {
-  currentCategory?: string;
+  selectedCategory?: string;
 };
 
 type CategoryQuery = {
@@ -20,7 +20,7 @@ type CategoryHashType = {
   [key: string]: number;
 };
 
-const CategoryList = ({ currentCategory = "" }: CategoryListProps) => {
+const CategoryList = ({ selectedCategory = "" }: CategoryListProps) => {
   const data = useStaticQuery<CategoryQuery>(graphql`
     query Category {
       allMdx {
@@ -58,7 +58,7 @@ const CategoryList = ({ currentCategory = "" }: CategoryListProps) => {
             key={key}
             name={key}
             count={value}
-            isSelected={currentCategory === key}
+            isSelected={selectedCategory === key}
           />
         ))}
       </List>

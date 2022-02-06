@@ -12,9 +12,13 @@ const HiddenGrid = styled(Grid)`
 
 type ContentsLayoutProps = {
   children: React.ReactNode;
+  selectedCategory?: string;
 };
 
-const ContentsLayout = ({ children }: ContentsLayoutProps) => {
+const ContentsLayout = ({
+  children,
+  selectedCategory,
+}: ContentsLayoutProps) => {
   return (
     <Container>
       <Grid container spacing={2}>
@@ -23,7 +27,7 @@ const ContentsLayout = ({ children }: ContentsLayoutProps) => {
         </Grid>
         <HiddenGrid item sm={3}>
           <Stack spacing={2}>
-            <CategoryList />
+            <CategoryList selectedCategory={selectedCategory} />
             <TagList />
           </Stack>
         </HiddenGrid>

@@ -1,5 +1,8 @@
 import React from "react";
 import CategoryList from "../../components/category/CategoryList";
+import Intro from "../../components/common/Intro";
+import ContentsLayout from "../../components/layout/ContentsLayout";
+import Layout from "../../components/layout/Layout";
 
 type CategoryDetailPageProps = {
   params: {
@@ -8,7 +11,17 @@ type CategoryDetailPageProps = {
 };
 
 const CategoryDetailPage = ({ params }: CategoryDetailPageProps) => {
-  return <CategoryList currentCategory={params.frontmatter__category} />;
+  const selectedCategory = params.frontmatter__category;
+
+  return (
+    <Layout>
+      <Intro type="category" selected={selectedCategory} />
+      <ContentsLayout selectedCategory={selectedCategory}>
+        {/* TODO - Add category filtered post list */}
+        postlist
+      </ContentsLayout>
+    </Layout>
+  );
 };
 
 export default CategoryDetailPage;
