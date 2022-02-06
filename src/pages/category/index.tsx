@@ -7,7 +7,7 @@ import Layout from "../../components/layout/Layout";
 const CategoryPage = () => {
   return (
     <Layout>
-      <Intro type="category" selected="All" />
+      <Intro type="category" />
       <ContentsLayout>
         <CategoryList />
       </ContentsLayout>

@@ -33,11 +33,13 @@ const Intro = ({ type, selected }: IntroProps) => {
       <Grow in={true} timeout={1500}>
         <IntroBox>
           <Typography variant="subtitle1">
-            {type && selected ? "Search Result" : "This is my Gatsby Blog"}
+            {type ? "Search Result" : "This is my Gatsby Blog"}
           </Typography>
           <Title variant="h3">
-            {type && selected
-              ? `${type.toUpperCase()} - "${selected.toUpperCase()}"`
+            {type
+              ? selected
+                ? `${type.toUpperCase()} - "${selected.toUpperCase()}"`
+                : `${type.toUpperCase()}`
               : "Caesiumy's Devlog"}
           </Title>
           <Line />
