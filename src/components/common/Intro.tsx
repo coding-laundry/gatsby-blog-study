@@ -22,13 +22,24 @@ const Line = styled(Divider)`
   width: 50%;
 `;
 
-const Intro = () => {
+type IntroProps = {
+  type?: string;
+  selected?: string;
+};
+
+const Intro = ({ type, selected }: IntroProps) => {
   return (
     <Container>
       <Grow in={true} timeout={1500}>
         <IntroBox>
-          <Typography variant="subtitle1">This is my Gatsby Blog</Typography>
-          <Title variant="h3">Caesiumy's Devlog</Title>
+          <Typography variant="subtitle1">
+            {type && selected ? "Search Result" : "This is my Gatsby Blog"}
+          </Typography>
+          <Title variant="h3">
+            {type && selected
+              ? `${type.toUpperCase()} - "${selected.toUpperCase()}"`
+              : "Caesiumy's Devlog"}
+          </Title>
           <Line />
         </IntroBox>
       </Grow>
