@@ -8,6 +8,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import SearchIcon from "@mui/icons-material/Search";
 import { Container, Slide, useScrollTrigger } from "@mui/material";
 import MenuDrawer from "./MenuDrawer";
+import { Link } from "gatsby";
 
 const HideOnScroll = ({ children }) => {
   const trigger = useScrollTrigger();
@@ -48,7 +49,7 @@ const Header = () => {
                 noWrap
                 sx={{ flexGrow: 1, textAlign: "center", fontWeight: "bold" }}
               >
-                My Gatsby Blog
+                <Link to="/">My Gatsby Blog</Link>
               </Typography>
               <IconButton aria-label="검색하기" onClick={onClickSearch}>
                 <SearchIcon sx={{ fontSize: 32 }} />
