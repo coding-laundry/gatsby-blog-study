@@ -19,7 +19,11 @@ type TagListQuery = {
   };
 };
 
-const TagList = () => {
+type TagListProps = {
+  limit?: number;
+};
+
+const TagList = ({ limit = Infinity }: TagListProps) => {
   const data = useStaticQuery<TagListQuery>(graphql`
     query {
       allMdx {
@@ -51,7 +55,7 @@ const TagList = () => {
       </Link>
       <CardContent>
         <TagWrapper>
-          {[...tags].slice(0, 15).map((tag) => (
+          {[...tags].slice(0, limit).map((tag) => (
             <TagItem key={tag} name={tag} />
           ))}
         </TagWrapper>

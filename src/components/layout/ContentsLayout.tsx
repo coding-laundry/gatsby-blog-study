@@ -28,7 +28,7 @@ const ContentsLayout = ({
         <HiddenGrid item sm={3}>
           <Stack spacing={2}>
             <CategoryList selectedCategory={selectedCategory} />
-            <TagList />
+            <TagList limit={25} />
           </Stack>
         </HiddenGrid>
       </Grid>
