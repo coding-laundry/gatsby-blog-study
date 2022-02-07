@@ -8,7 +8,7 @@ type TagItemProps = {
 
 const TagItem = ({ name }: TagItemProps) => {
   const onClickTagItem = () => {
-    navigate(`tags/${name}`);
+    navigate(`/tags/${name}`);
   };
 
   return (
