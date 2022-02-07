@@ -75,7 +75,7 @@ const PostItem = ({ post }: PostItemProps) => {
   };
 
   return (
-    <Link to={`blog/${post.slug}`} onClick={onClickLink}>
+    <Link to={`/blog/${post.slug}`} onClick={onClickLink}>
       <HoverCard variant="outlined">
         <CardFlexContent>
           <Box>
