@@ -51,9 +51,11 @@ const Header = () => {
               >
                 <Link to="/">My Gatsby Blog</Link>
               </Typography>
-              <IconButton aria-label="검색하기" onClick={onClickSearch}>
-                <SearchIcon sx={{ fontSize: 32 }} />
-              </IconButton>
+              <Link to="/search">
+                <IconButton aria-label="검색하기" onClick={onClickSearch}>
+                  <SearchIcon sx={{ fontSize: 32 }} />
+                </IconButton>
+              </Link>
             </Toolbar>
           </Container>
         </AppBar>
