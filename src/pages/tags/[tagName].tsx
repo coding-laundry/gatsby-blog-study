@@ -1,22 +1,60 @@
-import React from "react";
+import { graphql } from "gatsby";
+import React, { useEffect, useState } from "react";
 import Intro from "../../components/common/Intro";
 import ContentsLayout from "../../components/layout/ContentsLayout";
 import Layout from "../../components/layout/Layout";
+import PostList from "../../components/post/PostList";
+import { AllMarkdown } from "../../types/postTypes";
 
 type TagDetailPageProps = {
   tagName: string;
+  data: AllMarkdown;
 };
 
-const TagsDetailPage = ({ tagName }: TagDetailPageProps) => {
+const TagsDetailPage = ({ tagName, data }: TagDetailPageProps) => {
+  const [posts, setPosts] = useState([]);
+
+  useEffect(() => {
+    const filteredPosts = data.allMdx.edges.filter((post) =>
+      post.node.frontmatter.tags.includes(tagName)
+    );
+    setPosts(filteredPosts);
+  }, [tagName]);
+
   return (
     <Layout>
       <Intro type="tag" selected={`#${tagName}`} />
       <ContentsLayout>
-        {/* TODO - Add tag filtered post list */}
-        postlist
+        <PostList posts={posts} />
       </ContentsLayout>
     </Layout>
   );
 };
 
 export default TagsDetailPage;
+
+export const query = graphql`
+  query {
+    allMdx {
+      edges {
+        node {
+          frontmatter {
+            title
+            tags
+            date
+            category
+            thumbnail {
+              childImageSharp {
+                gatsbyImageData
+              }
+              publicURL
+            }
+          }
+          slug
+          excerpt(pruneLength: 64)
+          id
+        }
+      }
+    }
+  }
+`;
