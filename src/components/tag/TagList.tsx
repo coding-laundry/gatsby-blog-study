@@ -1,9 +1,8 @@
 import styled from "@emotion/styled";
 import { Box, Card, CardContent, CardHeader } from "@mui/material";
 import { graphql, Link, useStaticQuery } from "gatsby";
-import React, { useMemo } from "react";
+import React from "react";
 import TagItem from "./TagItem";
-import { PostFrontmatter } from "../../types/postTypes";
 
 const TagWrapper = styled(Box)`
   display: flex;
@@ -13,8 +12,8 @@ const TagWrapper = styled(Box)`
 
 type TagListQuery = {
   allMdx: {
-    nodes: {
-      frontmatter: Pick<PostFrontmatter, "tags">;
+    group: {
+      fieldValue: string;
     }[];
   };
 };
@@ -27,26 +26,12 @@ const TagList = ({ limit = Infinity }: TagListProps) => {
   const data = useStaticQuery<TagListQuery>(graphql`
     query {
       allMdx {
-        nodes {
-          frontmatter {
-            tags
-          }
+        group(field: frontmatter___tags) {
+          fieldValue
         }
       }
     }
   `);
-
-  const tags = useMemo(
-    () =>
-      data.allMdx.nodes.reduce((acc, cur) => {
-        const { tags } = cur.frontmatter;
-        tags.forEach((tag) => {
-          acc.add(tag);
-        });
-        return acc;
-      }, new Set<string>([])),
-    []
-  );
 
   return (
     <Card variant="outlined">
@@ -55,7 +40,7 @@ const TagList = ({ limit = Infinity }: TagListProps) => {
       </Link>
       <CardContent>
         <TagWrapper>
-          {[...tags].slice(0, limit).map((tag) => (
+          {data.allMdx.group.slice(0, limit).map(({ fieldValue: tag }) => (
             <TagItem key={tag} name={tag} />
           ))}
         </TagWrapper>

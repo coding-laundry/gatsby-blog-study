@@ -1,8 +1,7 @@
 import { Card, CardHeader, List } from "@mui/material";
 import { graphql, Link, useStaticQuery } from "gatsby";
-import React, { useMemo } from "react";
+import React from "react";
 import CategoryItem from "./CategoryItem";
-import { PostFrontmatter } from "../../types/postTypes";
 
 type CategoryListProps = {
   selectedCategory?: string;
@@ -10,42 +9,24 @@ type CategoryListProps = {
 
 type CategoryQuery = {
   allMdx: {
-    nodes: {
-      frontmatter: Pick<PostFrontmatter, "category">;
+    group: {
+      fieldValue: string;
+      totalCount: number;
     }[];
   };
 };
 
-type CategoryHashType = {
-  [key: string]: number;
-};
-
 const CategoryList = ({ selectedCategory = "" }: CategoryListProps) => {
   const data = useStaticQuery<CategoryQuery>(graphql`
-    query Category {
+    query {
       allMdx {
-        nodes {
-          frontmatter {
-            category
-          }
+        group(field: frontmatter___tags) {
+          fieldValue
+          totalCount
         }
       }
     }
   `);
-
-  const categoryHash: CategoryHashType = useMemo(
-    () =>
-      data.allMdx.nodes.reduce(
-        (acc, { frontmatter }) => {
-          const { category } = frontmatter;
-          acc["all"] += 1;
-          acc[category] ? (acc[category] += 1) : (acc[category] = 1);
-          return acc;
-        },
-        { all: 0 }
-      ),
-    []
-  );
 
   return (
     <Card variant="outlined">
@@ -53,12 +34,12 @@ const CategoryList = ({ selectedCategory = "" }: CategoryListProps) => {
         <CardHeader subheader="CATEGORY" />
       </Link>
       <List>
-        {Object.entries(categoryHash).map(([key, value]) => (
+        {data.allMdx.group.map(({ fieldValue: categoryName, totalCount }) => (
           <CategoryItem
-            key={key}
-            name={key}
-            count={value}
-            isSelected={selectedCategory === key}
+            key={categoryName}
+            name={categoryName}
+            count={totalCount}
+            isSelected={selectedCategory === categoryName}
           />
         ))}
       </List>
