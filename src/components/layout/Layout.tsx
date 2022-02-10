@@ -22,7 +22,7 @@ const Layout = ({ children }: LayoutProps) => {
       <Header />
       {children}
 
-      <Container>
+      <Container component="section">
         <Profile />
       </Container>
 

@@ -56,7 +56,7 @@ const MenuDrawer = ({ isOpen, onCloseDrawer }: MenuDrawerProps) => {
             <Link to={`/${key === "home" ? "" : key}`} key={key}>
               <ListItem disablePadding>
                 <ListItemButton selected={false}>
-                  <ListItemIcon>{listTable[key]}</ListItemIcon>
+                  <ListItemIcon aria-label={key}>{listTable[key]}</ListItemIcon>
                   <ListItemText primary={key.toUpperCase()} />
                 </ListItemButton>
               </ListItem>

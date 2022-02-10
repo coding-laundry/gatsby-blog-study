@@ -29,7 +29,7 @@ type IntroProps = {
 
 const Intro = ({ type, selected }: IntroProps) => {
   return (
-    <Container>
+    <Container component="section">
       <Grow in={true} timeout={1500}>
         <IntroBox>
           <Typography variant="subtitle1">
