@@ -22,7 +22,7 @@ const ContentsLayout = ({
   return (
     <Container>
       <Grid container spacing={2}>
-        <Grid item sm={9}>
+        <Grid item sm={9} xs={12}>
           {children}
         </Grid>
         <HiddenGrid item sm={3}>
