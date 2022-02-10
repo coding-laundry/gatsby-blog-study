@@ -10,16 +10,16 @@ const TagWrapper = styled(Box)`
   flex-wrap: wrap;
 `;
 
+type TagListProps = {
+  limit?: number;
+};
+
 type TagListQuery = {
   allMdx: {
     group: {
       fieldValue: string;
     }[];
   };
-};
-
-type TagListProps = {
-  limit?: number;
 };
 
 const TagList = ({ limit = Infinity }: TagListProps) => {

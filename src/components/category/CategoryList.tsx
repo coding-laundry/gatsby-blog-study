@@ -20,7 +20,7 @@ const CategoryList = ({ selectedCategory = "" }: CategoryListProps) => {
   const data = useStaticQuery<CategoryQuery>(graphql`
     query {
       allMdx {
-        group(field: frontmatter___tags) {
+        group(field: frontmatter___category) {
           fieldValue
           totalCount
         }
