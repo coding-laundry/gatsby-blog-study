@@ -48,7 +48,7 @@ const SearchResultContainer = ({ query, data }: SearchResultContainer) => {
   return (
     <Box>
       <SearchInput onChange={onChangeInput} value={value} />
-      {posts && <PostList posts={posts} />}
+      <PostList posts={posts} />
     </Box>
   );
 };
