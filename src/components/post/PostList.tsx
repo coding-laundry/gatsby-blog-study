@@ -17,4 +17,4 @@ const PostList = ({ posts }: PostListProps) => {
   );
 };
 
-export default PostList;
+export default React.memo(PostList);
