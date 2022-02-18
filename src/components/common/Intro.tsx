@@ -11,6 +11,7 @@ import React from "react";
 const IntroBox = styled(Box)`
   text-align: center;
   padding: 48px 0;
+  overflow: hidden;
 `;
 
 const Title = styled(Typography)`

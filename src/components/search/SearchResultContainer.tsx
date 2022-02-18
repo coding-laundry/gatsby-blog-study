@@ -1,5 +1,5 @@
 import { Box } from "@mui/material";
-import React, { useCallback, useMemo, useState } from "react";
+import React, { useMemo, useState } from "react";
 import SearchInput from "./SearchInput";
 import PostList from "../post/PostList";
 import { navigate } from "gatsby";
