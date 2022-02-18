@@ -1,5 +1,5 @@
 import { Box } from "@mui/material";
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import SearchInput from "./SearchInput";
 import PostList from "../post/PostList";
 import { navigate } from "gatsby";
@@ -12,7 +12,6 @@ interface SearchResultContainer {
 
 const SearchResultContainer = ({ query, data }: SearchResultContainer) => {
   const [value, setValue] = useState(query ?? "");
-
   const onChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
     setValue(value);
@@ -26,7 +25,8 @@ const SearchResultContainer = ({ query, data }: SearchResultContainer) => {
         const { slug, excerpt, frontmatter } = node;
         const { title, category, tags } = frontmatter;
 
-        const isContain = (s: string) => s.indexOf(query) !== -1;
+        const isContain = (s: string) =>
+          s.toLowerCase().indexOf(query.toLowerCase()) !== -1;
 
         if (
           isContain(slug) ||
@@ -40,6 +40,10 @@ const SearchResultContainer = ({ query, data }: SearchResultContainer) => {
       }),
     [query]
   );
+
+  useEffect(() => {
+    !query && setValue("");
+  }, [query]);
 
   return (
     <Box>
