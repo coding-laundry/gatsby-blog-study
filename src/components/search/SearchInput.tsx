@@ -1,6 +1,11 @@
 import { InputAdornment, TextField } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import React from "react";
+import styled from "@emotion/styled";
+
+const SearchTextField = styled(TextField)`
+  margin-bottom: 20px;
+`;
 
 interface SearchInputProps {
   value: string;
@@ -9,7 +14,7 @@ interface SearchInputProps {
 
 const SearchInput = ({ value, onChange }: SearchInputProps) => {
   return (
-    <TextField
+    <SearchTextField
       value={value}
       onChange={onChange}
       fullWidth
