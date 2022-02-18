@@ -26,8 +26,7 @@ const SearchResultContainer = ({ query, data }: SearchResultContainer) => {
         const { slug, excerpt, frontmatter } = node;
         const { title, category, tags } = frontmatter;
 
-        const isContain = (s: string) =>
-          s.indexOf(decodeURIComponent(query)) !== -1;
+        const isContain = (s: string) => s.indexOf(query) !== -1;
 
         if (
           isContain(slug) ||

@@ -20,7 +20,7 @@ const SearchIndex = ({ location, data }: PageProps & SearchIndexProps) => {
         .split("&")
         .reduce((acc, cur) => {
           const [key, value] = cur.split("=");
-          acc[key] = value;
+          acc[key] = decodeURIComponent(value);
           return acc;
         }, {}),
     [search]
@@ -28,7 +28,7 @@ const SearchIndex = ({ location, data }: PageProps & SearchIndexProps) => {
 
   return (
     <Layout>
-      <Intro type="Search" selected={""} />
+      <Intro type="Search" selected={qs["q"]} />
       <ContentsLayout>
         <SearchResultContainer query={qs["q"]} data={data} />
       </ContentsLayout>
