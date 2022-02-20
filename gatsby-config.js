@@ -7,11 +7,13 @@ module.exports = {
     "gatsby-plugin-image",
     "gatsby-plugin-react-helmet",
     "gatsby-plugin-sitemap",
-    "gatsby-plugin-mdx",
     `gatsby-plugin-mdx-source-name`,
     "gatsby-plugin-sharp",
     "gatsby-transformer-sharp",
+    `gatsby-plugin-sharp`,
     `gatsby-plugin-material-ui`,
+    `gatsby-remark-images`,
+    `gatsby-plugin-sass`,
     {
       resolve: "gatsby-source-filesystem",
       options: {
@@ -41,6 +43,21 @@ module.exports = {
       options: {
         name: "about",
         path: "./content/about",
+      },
+    },
+    {
+      resolve: `gatsby-plugin-mdx`,
+      options: {
+        gatsbyRemarkPlugins: [
+          `gatsby-remark-autolink-headers`,
+          `gatsby-remark-prismjs`,
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              maxWidth: 720,
+            },
+          },
+        ],
       },
     },
   ],

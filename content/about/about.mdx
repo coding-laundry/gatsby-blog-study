@@ -16,6 +16,17 @@ this is about mdx
 
 `codebox`
 
-```js
-this is code shell
+```javascript{1,4-6}
+plugins: [
+  {
+      resolve: "gatsby-source-filesystem",
+      options: {
+        name: "images",
+        path: "./src/images/",
+      },
+      __key: "images",
+    },
+]
 ```
+
+![neko](./코딩네코.jpg)
