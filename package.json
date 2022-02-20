@@ -26,6 +26,7 @@
     "gatsby-plugin-image": "^2.5.2",
     "gatsby-plugin-material-ui": "^4.0.2",
     "gatsby-plugin-mdx": "^3.5.2",
+    "gatsby-plugin-mdx-source-name": "^1.0.1",
     "gatsby-plugin-react-helmet": "^5.5.0",
     "gatsby-plugin-sharp": "^4.5.2",
     "gatsby-plugin-sitemap": "^5.5.0",

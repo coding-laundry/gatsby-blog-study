@@ -31,7 +31,11 @@ export default CategoryDetailPage;
 export const query = graphql`
   query ($frontmatter__category: String) {
     allMdx(
-      filter: { frontmatter: { category: { eq: $frontmatter__category } } }
+      filter: {
+        fields: { source: { eq: "blog" } }
+        frontmatter: { category: { eq: $frontmatter__category } }
+      }
+      sort: { fields: frontmatter___date, order: DESC }
     ) {
       edges {
         node {
