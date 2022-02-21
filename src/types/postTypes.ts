@@ -19,7 +19,7 @@ export type PostNode = {
   frontmatter: PostFrontmatter;
   id: string;
   slug: string;
-  excerpt: string;
+  excerpt?: string;
   body?: string;
 };
 
