@@ -19,7 +19,7 @@ const ContentsLayout = ({
           {children}
         </Grid>
         <Grid item sm={3} xs={12} component="aside">
-          <Stack spacing={2}>
+          <Stack spacing={2} sx={{ position: "sticky", top: 65 }}>
             <CategoryList selectedCategory={selectedCategory} />
             <TagList limit={25} />
           </Stack>
