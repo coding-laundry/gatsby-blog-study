@@ -3,6 +3,7 @@ import { MDXRenderer } from "gatsby-plugin-mdx";
 import React from "react";
 import ContentsLayout from "../../components/layout/ContentsLayout";
 import Layout from "../../components/layout/Layout";
+import PostHead from "../../components/post/PostHead";
 import { PostNode } from "../../types/postTypes";
 
 interface PostTemplateProps {
@@ -13,11 +14,11 @@ interface PostTemplateProps {
 
 const PostTemplate = ({ data }: PostTemplateProps) => {
   const { frontmatter, body } = data.mdx;
-  const { title, date, category, tags, thumbnail } = frontmatter;
 
   return (
     <Layout>
       <ContentsLayout>
+        <PostHead frontmatter={frontmatter} />
         <MDXRenderer>{body}</MDXRenderer>
       </ContentsLayout>
     </Layout>
@@ -37,7 +38,7 @@ export const query = graphql`
         title
         thumbnail {
           childImageSharp {
-            gatsbyImageData
+            gatsbyImageData(width: 512)
           }
         }
       }

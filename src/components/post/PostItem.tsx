@@ -5,6 +5,7 @@ import { GatsbyImage } from "gatsby-plugin-image";
 import React from "react";
 import { PostNode } from "../../types/postTypes";
 import Tags from "../tag/Tags";
+import CategoryLink from "./CategoryLink";
 
 const HoverCard = styled(Card)`
   transition: transform 0.2s ease-in-out;
@@ -12,18 +13,6 @@ const HoverCard = styled(Card)`
   &:hover {
     transform: scale(1.01);
     box-shadow: 6px 6px 0 0 rgba(0, 0, 0, 0.12);
-  }
-`;
-
-const Category = styled(Typography)`
-  display: inline-block;
-  padding: 3px 5px;
-  margin-left: -5px;
-  border-radius: 15px;
-  transition: background-color 0.3s;
-
-  &:hover {
-    background-color: rgba(0, 0, 0, 0.12);
   }
 `;
 
@@ -62,11 +51,6 @@ type PostItemProps = {
 const PostItem = ({ post }: PostItemProps) => {
   const { title, date, tags, category, thumbnail } = post.frontmatter;
 
-  const onClickCategory = (e: React.MouseEvent<HTMLElement>) => {
-    const { textContent } = e.target as HTMLElement;
-    navigate(`/category/${textContent.toLowerCase()}`);
-  };
-
   const onClickLink = (e: React.MouseEvent<HTMLAnchorElement>) => {
     const { classList } = e.target as HTMLElement;
     if (classList.contains("category") || classList.contains("MuiChip-label")) {
@@ -79,14 +63,7 @@ const PostItem = ({ post }: PostItemProps) => {
       <HoverCard variant="outlined">
         <CardFlexContent>
           <Box>
-            <Category
-              className="category"
-              variant="subtitle1"
-              color="primary"
-              onClick={onClickCategory}
-            >
-              {category.toUpperCase()}
-            </Category>
+            <CategoryLink name={category} />
             <Title variant="h5">{title}</Title>
             <Typography variant="caption">{date}</Typography>
             <Typography variant="body2" color="text.secondary">
