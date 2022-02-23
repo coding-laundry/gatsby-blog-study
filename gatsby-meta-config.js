@@ -1,5 +1,6 @@
 module.exports = {
   title: "Caesiumy Gatsby Blog",
+  repo: "https://github.com/coding-laundry/gatsby-blog-study",
   siteUrl: `https://gatsbyblogstudymain.gatsbyjs.io/`,
   author: "Caesiumy",
   description: "Caesiumy Devlog by Gatsby",

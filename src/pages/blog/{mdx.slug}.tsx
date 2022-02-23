@@ -4,6 +4,7 @@ import React from "react";
 import ContentsLayout from "../../components/layout/ContentsLayout";
 import Layout from "../../components/layout/Layout";
 import PostHead from "../../components/post/PostHead";
+import UtteranceComments from "../../components/post/UtteranceComments";
 import { PostNode } from "../../types/postTypes";
 
 interface PostTemplateProps {
@@ -20,6 +21,7 @@ const PostTemplate = ({ data }: PostTemplateProps) => {
       <ContentsLayout>
         <PostHead frontmatter={frontmatter} />
         <MDXRenderer>{body}</MDXRenderer>
+        <UtteranceComments />
       </ContentsLayout>
     </Layout>
   );
