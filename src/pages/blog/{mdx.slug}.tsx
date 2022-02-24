@@ -1,3 +1,4 @@
+import { Divider } from "@mui/material";
 import { graphql } from "gatsby";
 import { MDXRenderer } from "gatsby-plugin-mdx";
 import React from "react";
@@ -21,6 +22,7 @@ const PostTemplate = ({ data }: PostTemplateProps) => {
       <ContentsLayout>
         <PostHead frontmatter={frontmatter} />
         <MDXRenderer>{body}</MDXRenderer>
+        <Divider />
         <UtteranceComments />
       </ContentsLayout>
     </Layout>

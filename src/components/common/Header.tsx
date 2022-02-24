@@ -9,6 +9,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import { Container, Slide, useScrollTrigger } from "@mui/material";
 import MenuDrawer from "./MenuDrawer";
 import { Link } from "gatsby";
+import ProgressBar from "./ProgressBar";
 
 const HideOnScroll = ({ children }) => {
   const trigger = useScrollTrigger();
@@ -60,6 +61,7 @@ const Header = () => {
           </Container>
         </AppBar>
       </HideOnScroll>
+      <ProgressBar />
       <MenuDrawer isOpen={isOpenDrawer} onCloseDrawer={onCloseDrawer} />
     </>
   );
