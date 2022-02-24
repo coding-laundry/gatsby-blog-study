@@ -17,8 +17,8 @@
   "dependencies": {
     "@emotion/react": "^11.7.1",
     "@emotion/styled": "^11.6.0",
-    "@mdx-js/mdx": "^2.0.0",
-    "@mdx-js/react": "^2.0.0",
+    "@mdx-js/mdx": "1",
+    "@mdx-js/react": "1",
     "@mui/icons-material": "^5.3.0",
     "@mui/material": "^5.3.0",
     "gatsby": "^4.5.4",
@@ -37,11 +37,15 @@
     "gatsby-source-filesystem": "^4.5.2",
     "gatsby-transformer-remark": "^5.7.0",
     "gatsby-transformer-sharp": "^4.5.0",
+    "lodash.throttle": "^4.1.1",
     "pretendard": "^1.2.1",
     "prismjs": "^1.27.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-helmet": "^6.1.0",
     "sass": "^1.49.8"
+  },
+  "devDependencies": {
+    "@types/lodash.throttle": "^4.1.6"
   }
 }
