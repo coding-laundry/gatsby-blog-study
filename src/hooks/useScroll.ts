@@ -1,26 +1,32 @@
 import { useEffect, useState } from "react";
 import throttle from "lodash.throttle";
 
-const DELAY = 10;
+const PROGRESS_DELAY = 10;
+const CURRENT_HEIGHT_DELAY = 100;
 
 export const useScroll = () => {
-  const [curHeight, setCurrentHeight] = useState(1);
+  const [curHeight, setCurrentHeight] = useState(0);
   const [scrollProgress, setScrollProgress] = useState(1);
 
-  const setScrollConfig = throttle(() => {
-    setCurrentHeight(window.innerHeight + window.scrollY);
-
+  const setScrollProgressConfig = throttle(() => {
     const progress =
       (window.scrollY / (document.body.offsetHeight - window.innerHeight)) *
       100;
     setScrollProgress(Math.ceil(progress));
-  }, DELAY);
+  }, PROGRESS_DELAY);
+
+  const setCurrentScrollConfig = throttle(
+    () => setCurrentHeight(window.innerHeight + window.scrollY),
+    CURRENT_HEIGHT_DELAY
+  );
 
   useEffect(() => {
-    window.addEventListener("scroll", setScrollConfig);
+    window.addEventListener("scroll", setScrollProgressConfig);
+    window.addEventListener("scroll", setCurrentScrollConfig);
 
     return () => {
-      window.removeEventListener("scroll", setScrollConfig);
+      window.removeEventListener("scroll", setScrollProgressConfig);
+      window.removeEventListener("scroll", setCurrentScrollConfig);
     };
   }, []);
 
