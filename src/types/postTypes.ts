@@ -1,18 +1,9 @@
 import { IGatsbyImageData } from "gatsby-plugin-image";
 
-export type GatsbyThumbnail = {
-  childImageSharp: {
-    gatsbyImageData: IGatsbyImageData;
+export type AllMarkdown = {
+  allMdx: {
+    edges: { node: PostNode }[];
   };
-  publicURL?: string;
-};
-
-export type PostFrontmatter = {
-  title: string;
-  tags: string[];
-  date: string;
-  category: string;
-  thumbnail: GatsbyThumbnail;
 };
 
 export type PostNode = {
@@ -26,10 +17,19 @@ export type PostNode = {
   };
 };
 
-export type AllMarkdown = {
-  allMdx: {
-    edges: { node: PostNode }[];
+export type PostFrontmatter = {
+  title: string;
+  tags: string[];
+  date: string;
+  category: string;
+  thumbnail: GatsbyThumbnail;
+};
+
+export type GatsbyThumbnail = {
+  childImageSharp: {
+    gatsbyImageData: IGatsbyImageData;
   };
+  publicURL?: string;
 };
 
 export type TableItem = {
