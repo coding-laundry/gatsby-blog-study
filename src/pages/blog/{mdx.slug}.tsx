@@ -19,7 +19,7 @@ const PostTemplate = ({ data }: PostTemplateProps) => {
 
   return (
     <Layout>
-      <ContentsLayout>
+      <ContentsLayout tableOfContents={tableOfContents}>
         <PostHead frontmatter={frontmatter} />
         <MDXRenderer>{body}</MDXRenderer>
         <Divider />

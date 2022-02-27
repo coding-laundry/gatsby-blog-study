@@ -12,9 +12,7 @@ export type PostNode = {
   slug: string;
   excerpt?: string;
   body?: string;
-  tableOfContents?: {
-    items: TableItem[];
-  };
+  tableOfContents?: PostTableOfContents;
 };
 
 export type PostFrontmatter = {
@@ -30,6 +28,10 @@ export type GatsbyThumbnail = {
     gatsbyImageData: IGatsbyImageData;
   };
   publicURL?: string;
+};
+
+export type PostTableOfContents = {
+  items: TableItem[];
 };
 
 export type TableItem = {
