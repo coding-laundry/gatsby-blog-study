@@ -24,7 +24,9 @@ const ContentsLayout = ({
           {children}
         </Grid>
         <Grid item sm={3} xs={12} component="aside">
-          {tableOfContents && <TableOfContentsList />}
+          {tableOfContents && (
+            <TableOfContentsList tableOfContents={tableOfContents} />
+          )}
           <Stack spacing={2} sx={{ position: "sticky", top: 65 }}>
             <CategoryList selectedCategory={selectedCategory} />
             <TagList limit={25} />
