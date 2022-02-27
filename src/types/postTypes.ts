@@ -21,10 +21,19 @@ export type PostNode = {
   slug: string;
   excerpt?: string;
   body?: string;
+  tableOfContents?: {
+    items: TableItem[];
+  };
 };
 
 export type AllMarkdown = {
   allMdx: {
     edges: { node: PostNode }[];
   };
+};
+
+export type TableItem = {
+  url: string;
+  title: string;
+  items: TableItem[];
 };

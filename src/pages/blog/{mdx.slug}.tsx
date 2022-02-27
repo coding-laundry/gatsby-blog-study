@@ -15,7 +15,7 @@ interface PostTemplateProps {
 }
 
 const PostTemplate = ({ data }: PostTemplateProps) => {
-  const { frontmatter, body } = data.mdx;
+  const { frontmatter, body, tableOfContents } = data.mdx;
 
   return (
     <Layout>
@@ -48,6 +48,7 @@ export const query = graphql`
       }
       body
       slug
+      tableOfContents
     }
   }
 `;
