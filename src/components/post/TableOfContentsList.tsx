@@ -14,6 +14,12 @@ const TableStack = styled(Stack)`
   width: 100%;
 `;
 
+const HeaderListItemText = styled(ListItemText)`
+  span {
+    font-size: 1rem;
+  }
+`;
+
 const NestedList = styled(List)`
   border-left: 1px solid lightgray;
   margin-left: 1rem;
@@ -26,14 +32,14 @@ const TableOfContentsList = ({
   return (
     <Box>
       <List dense>
-        {items.map((item) => (
+        {items?.map((item) => (
           <ListItem key={item.url} disableGutters>
             <TableStack>
               <ListItemButton component="a" href={item.url}>
-                <ListItemText primary={item.title} sx={{ fontSize: "1rem" }} />
+                <HeaderListItemText primary={item.title} />
               </ListItemButton>
               <NestedList disablePadding dense>
-                {item.items.map((item) => (
+                {item.items?.map((item) => (
                   <ListItem key={item.url} disableGutters>
                     <ListItemButton component="a" href={item.url}>
                       <ListItemText primary={item.title} />

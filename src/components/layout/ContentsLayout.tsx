@@ -15,6 +15,11 @@ const HiddenBox = styled(Box)`
   }
 `;
 
+const StickyStack = styled(Stack)`
+  position: sticky;
+  top: 65;
+`;
+
 type ContentsLayoutProps = {
   children: React.ReactNode;
   selectedCategory?: string;
@@ -32,7 +37,7 @@ const ContentsLayout = ({
           {children}
         </Grid>
         <Grid item sm={3} xs={12} component="aside">
-          <Stack spacing={2} sx={{ position: "sticky", top: 65 }}>
+          <StickyStack spacing={2}>
             {tableOfContents && (
               <HiddenBox>
                 <TableOfContentsList tableOfContents={tableOfContents} />
@@ -40,7 +45,7 @@ const ContentsLayout = ({
             )}
             <CategoryList selectedCategory={selectedCategory} />
             <TagList limit={25} />
-          </Stack>
+          </StickyStack>
         </Grid>
       </Grid>
     </Container>
