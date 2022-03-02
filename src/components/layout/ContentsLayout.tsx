@@ -17,7 +17,7 @@ const HiddenBox = styled(Box)`
 
 const StickyStack = styled(Stack)`
   position: sticky;
-  top: 65;
+  top: 65px;
 `;
 
 type ContentsLayoutProps = {
