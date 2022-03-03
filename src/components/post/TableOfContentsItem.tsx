@@ -1,22 +1,11 @@
 import styled from "@emotion/styled";
-import {
-  List,
-  ListItem,
-  ListItemButton,
-  ListItemText,
-  Stack,
-} from "@mui/material";
+import { List, ListItem, Stack } from "@mui/material";
 import React from "react";
 import { TableItem } from "../../types/postTypes";
+import TableOfContentsItemButton from "./TableOfContentsItemButton";
 
 const TableStack = styled(Stack)`
   width: 100%;
-`;
-
-const HeaderListItemText = styled(ListItemText)`
-  span {
-    font-size: 1rem;
-  }
 `;
 
 const NestedList = styled(List)`
@@ -32,15 +21,11 @@ const TableOfContentsItem = ({ item }: TableOfContentsItemProps) => {
   return (
     <ListItem disableGutters>
       <TableStack>
-        <ListItemButton component="a" href={item.url}>
-          <HeaderListItemText primary={item.title} />
-        </ListItemButton>
+        <TableOfContentsItemButton item={item} />
         <NestedList disablePadding dense>
           {item.items?.map((item) => (
             <ListItem key={item.url} disableGutters>
-              <ListItemButton component="a" href={item.url}>
-                <ListItemText primary={item.title} />
-              </ListItemButton>
+              <TableOfContentsItemButton item={item} />
             </ListItem>
           ))}
         </NestedList>
