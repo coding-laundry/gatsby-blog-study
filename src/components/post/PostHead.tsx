@@ -4,7 +4,7 @@ import { GatsbyImage } from "gatsby-plugin-image";
 import React from "react";
 import { PostFrontmatter } from "../../types/postTypes";
 import Tags from "../tag/Tags";
-import CategoryLink from "./CategoryLink";
+import CategoryLink from "../category/CategoryLink";
 
 const PostHeadBlock = styled.div`
   border-bottom: 1px solid #e0e0e0;

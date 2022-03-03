@@ -5,7 +5,7 @@ import { GatsbyImage } from "gatsby-plugin-image";
 import React from "react";
 import { PostNode } from "../../types/postTypes";
 import Tags from "../tag/Tags";
-import CategoryLink from "./CategoryLink";
+import CategoryLink from "../category/CategoryLink";
 
 const HoverCard = styled(Card)`
   transition: transform 0.2s ease-in-out;
