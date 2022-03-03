@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import { List, ListItem, Stack } from "@mui/material";
 import React from "react";
-import { TableItem } from "../../types/postTypes";
+import { TableItem } from "../../../types/postTypes";
 import TableOfContentsItemButton from "./TableOfContentsItemButton";
 
 const TableStack = styled(Stack)`

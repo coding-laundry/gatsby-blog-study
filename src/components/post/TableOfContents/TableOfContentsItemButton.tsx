@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import { ListItemButton, ListItemText } from "@mui/material";
 import React from "react";
-import { TableItem } from "../../types/postTypes";
+import { TableItem } from "../../../types/postTypes";
 
 const HeaderListItemText = styled(ListItemText)``;
 

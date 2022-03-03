@@ -6,7 +6,7 @@ import Stack from "@mui/material/Stack";
 import React from "react";
 import { PostNode } from "../../types/postTypes";
 import CategoryList from "../category/CategoryList";
-import TableOfContentsList from "../post/TableOfContentsList";
+import TableOfContentsList from "../post/TableOfContents/TableOfContentsList";
 import TagList from "../tag/TagList";
 
 const HiddenBox = styled(Box)`

@@ -1,6 +1,6 @@
 import { List } from "@mui/material";
 import React from "react";
-import { PostNode } from "../../types/postTypes";
+import { PostNode } from "../../../types/postTypes";
 import TableOfContentsItem from "./TableOfContentsItem";
 
 const TableOfContentsList = ({
