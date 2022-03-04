@@ -40,7 +40,10 @@ const ContentsLayout = ({
           <StickyStack spacing={2}>
             {tableOfContents && (
               <HiddenBox>
-                <TableOfContentsList tableOfContents={tableOfContents} />
+                <TableOfContentsList
+                  items={tableOfContents.items}
+                  nestedHead={false}
+                />
               </HiddenBox>
             )}
             <CategoryList selectedCategory={selectedCategory} />

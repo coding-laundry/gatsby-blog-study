@@ -3,14 +3,10 @@ import { List, ListItem, Stack } from "@mui/material";
 import React from "react";
 import { TableItem } from "../../../types/postTypes";
 import TableOfContentsItemButton from "./TableOfContentsItemButton";
+import TableOfContentsList from "./TableOfContentsList";
 
 const TableStack = styled(Stack)`
   width: 100%;
-`;
-
-const NestedList = styled(List)`
-  border-left: 1px solid lightgray;
-  margin-left: 1rem;
 `;
 
 interface TableOfContentsItemProps {
@@ -22,13 +18,7 @@ const TableOfContentsItem = ({ item }: TableOfContentsItemProps) => {
     <ListItem disableGutters>
       <TableStack>
         <TableOfContentsItemButton item={item} />
-        <NestedList disablePadding dense>
-          {item.items?.map((item) => (
-            <ListItem key={item.url} disableGutters>
-              <TableOfContentsItemButton item={item} />
-            </ListItem>
-          ))}
-        </NestedList>
+        <TableOfContentsList items={item.items} />
       </TableStack>
     </ListItem>
   );

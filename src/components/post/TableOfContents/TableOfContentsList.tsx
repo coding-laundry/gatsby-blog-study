@@ -1,19 +1,34 @@
+import { css } from "@emotion/react";
+import styled from "@emotion/styled";
 import { List } from "@mui/material";
 import React from "react";
-import { PostNode } from "../../../types/postTypes";
+import { TableItem } from "../../../types/postTypes";
 import TableOfContentsItem from "./TableOfContentsItem";
 
-const TableOfContentsList = ({
-  tableOfContents,
-}: Pick<PostNode, "tableOfContents">) => {
-  const { items } = tableOfContents;
+const NestedList = styled(List)`
+  margin-left: 1rem;
+  ${(props: { nestedHead?: boolean }) =>
+    props.nestedHead &&
+    css`
+      border-left: 1px solid lightgray;
+    `}
+`;
 
+interface TableOfContentsListProps {
+  items: TableItem[];
+  nestedHead?: boolean;
+}
+
+const TableOfContentsList = ({
+  items,
+  nestedHead = true,
+}: TableOfContentsListProps) => {
   return (
-    <List disablePadding dense>
+    <NestedList disablePadding dense nestedHead={nestedHead}>
       {items?.map((item) => (
         <TableOfContentsItem key={item.url} item={item} />
       ))}
-    </List>
+    </NestedList>
   );
 };
 

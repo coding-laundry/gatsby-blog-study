@@ -13,7 +13,7 @@ const TableOfContentsItemButton = ({
   item,
 }: TableOfContentsItemButtonProps) => {
   return (
-    <ListItemButton component="a" href={item.url}>
+    <ListItemButton component="a" href={item.url} selected={false}>
       <HeaderListItemText primary={item.title} />
     </ListItemButton>
   );
