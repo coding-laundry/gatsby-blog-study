@@ -32,7 +32,7 @@ const ContentsLayout = ({
         </Grid>
         <Grid item sm={3} xs={12} component="aside">
           <StickyStack spacing={2}>
-            {tableOfContents && (
+            {tableOfContents?.items && (
               <TableOfContentsBox items={tableOfContents.items} />
             )}
             <CategoryList selectedCategory={selectedCategory} />
