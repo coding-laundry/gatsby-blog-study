@@ -1,8 +1,9 @@
 import styled from "@emotion/styled";
 import { Box } from "@mui/material";
-import React from "react";
+import React, { useMemo } from "react";
 import TableOfContentsList from "./TableOfContentsList";
 import { TableItem } from "../../../types/postTypes";
+import { getIds } from "../../../utils/getIds";
 
 const HiddenBox = styled(Box)`
   @media (max-width: 600px) {
@@ -15,7 +16,9 @@ interface TableOfContentsBoxProps {
 }
 
 const TableOfContentsBox = ({ items }: TableOfContentsBoxProps) => {
-  console.log("items", items);
+  const allIds = useMemo(() => getIds(items), [items]);
+
+  console.log("allIds :>> ", allIds);
 
   return (
     <HiddenBox>
