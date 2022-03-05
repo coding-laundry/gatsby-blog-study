@@ -6,14 +6,8 @@ import Stack from "@mui/material/Stack";
 import React from "react";
 import { PostNode } from "../../types/postTypes";
 import CategoryList from "../category/CategoryList";
-import TableOfContentsList from "../post/TableOfContents/TableOfContentsList";
+import TableOfContentsBox from "../post/TableOfContents/TableOfContentsBox";
 import TagList from "../tag/TagList";
-
-const HiddenBox = styled(Box)`
-  @media (max-width: 600px) {
-    display: none;
-  }
-`;
 
 const StickyStack = styled(Stack)`
   position: sticky;
@@ -39,12 +33,7 @@ const ContentsLayout = ({
         <Grid item sm={3} xs={12} component="aside">
           <StickyStack spacing={2}>
             {tableOfContents && (
-              <HiddenBox>
-                <TableOfContentsList
-                  items={tableOfContents.items}
-                  nestedHead={false}
-                />
-              </HiddenBox>
+              <TableOfContentsBox items={tableOfContents.items} />
             )}
             <CategoryList selectedCategory={selectedCategory} />
             <TagList limit={25} />

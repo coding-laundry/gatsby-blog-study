@@ -15,8 +15,6 @@ const TableOfContentsList = ({
   items,
   nestedHead = true,
 }: TableOfContentsListProps) => {
-  console.log("items", items);
-
   return (
     <NestedList
       disablePadding
