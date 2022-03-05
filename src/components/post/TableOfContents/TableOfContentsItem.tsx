@@ -18,7 +18,7 @@ const TableOfContentsItem = ({ item }: TableOfContentsItemProps) => {
     <ListItem disableGutters>
       <TableStack>
         <TableOfContentsItemButton item={item} />
-        <TableOfContentsList items={item.items} />
+        {item.items && <TableOfContentsList items={item.items} />}
       </TableStack>
     </ListItem>
   );
