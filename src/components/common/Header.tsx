@@ -27,10 +27,6 @@ const Header = () => {
   const onOpenDrawer = () => setIsOpenDrawer(true);
   const onCloseDrawer = () => setIsOpenDrawer(false);
 
-  const onClickSearch = () => {
-    console.log("click Search");
-  };
-
   return (
     <>
       <HideOnScroll>
@@ -53,7 +49,7 @@ const Header = () => {
                 <Link to="/">My Gatsby Blog</Link>
               </Typography>
               <Link to="/search">
-                <IconButton aria-label="검색하기" onClick={onClickSearch}>
+                <IconButton aria-label="검색하기">
                   <SearchIcon sx={{ fontSize: 32 }} />
                 </IconButton>
               </Link>

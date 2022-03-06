@@ -15,6 +15,7 @@ interface SearchInputProps {
 const SearchInput = ({ value, onChange }: SearchInputProps) => {
   return (
     <SearchTextField
+      autoFocus
       value={value}
       onChange={onChange}
       fullWidth
