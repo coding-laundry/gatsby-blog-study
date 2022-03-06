@@ -7,15 +7,19 @@ const HeaderListItemText = styled(ListItemText)``;
 
 interface TableOfContentsItemButtonProps {
   item: TableItem;
-  selected: boolean;
+  selectedId: string;
 }
 
 const TableOfContentsItemButton = ({
   item,
-  selected = false,
+  selectedId,
 }: TableOfContentsItemButtonProps) => {
   return (
-    <ListItemButton component="a" href={item.url} selected={selected}>
+    <ListItemButton
+      component="a"
+      href={item.url}
+      selected={selectedId === item.url.slice(1)}
+    >
       <HeaderListItemText primary={item.title} />
     </ListItemButton>
   );

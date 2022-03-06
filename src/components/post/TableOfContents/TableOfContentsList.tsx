@@ -9,11 +9,13 @@ const NestedList = styled(List)`
 interface TableOfContentsListProps {
   items: TableItem[];
   nestedHead?: boolean;
+  selectedId: string;
 }
 
 const TableOfContentsList = ({
   items,
   nestedHead = true,
+  selectedId,
 }: TableOfContentsListProps) => {
   return (
     <NestedList
@@ -22,7 +24,11 @@ const TableOfContentsList = ({
       sx={nestedHead && { borderLeft: "1px solid lightgray" }}
     >
       {items?.map((item) => (
-        <TableOfContentsItem key={item.url} item={item} selected={false} />
+        <TableOfContentsItem
+          key={item.url}
+          item={item}
+          selectedId={selectedId}
+        />
       ))}
     </NestedList>
   );

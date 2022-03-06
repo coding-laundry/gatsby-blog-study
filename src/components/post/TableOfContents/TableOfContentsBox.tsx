@@ -4,8 +4,10 @@ import React, { useMemo } from "react";
 import TableOfContentsList from "./TableOfContentsList";
 import { TableItem } from "../../../types/postTypes";
 import { getIds } from "../../../utils/getIds";
+import { useActiveHead } from "../../../hooks/useActiveHead";
 
 const HiddenBox = styled(Box)`
+  margin-left: -1rem;
   @media (max-width: 600px) {
     display: none;
   }
@@ -17,12 +19,15 @@ interface TableOfContentsBoxProps {
 
 const TableOfContentsBox = ({ items }: TableOfContentsBoxProps) => {
   const allIds = useMemo(() => getIds(items), [items]);
-
-  console.log("allIds :>> ", allIds);
+  const { active } = useActiveHead(allIds);
 
   return (
     <HiddenBox>
-      <TableOfContentsList items={items} nestedHead={false} />
+      <TableOfContentsList
+        items={items}
+        nestedHead={false}
+        selectedId={active}
+      />
     </HiddenBox>
   );
 };
