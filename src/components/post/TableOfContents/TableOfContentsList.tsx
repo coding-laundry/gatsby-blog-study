@@ -23,9 +23,9 @@ const TableOfContentsList = ({
       dense
       sx={nestedHead && { borderLeft: "1px solid lightgray" }}
     >
-      {items?.map((item) => (
+      {items?.map((item, index) => (
         <TableOfContentsItem
-          key={item.url}
+          key={item.url || `unnamedHead-${index}`}
           item={item}
           selectedId={selectedId}
         />

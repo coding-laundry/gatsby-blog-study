@@ -18,7 +18,7 @@ const TableOfContentsItemButton = ({
     <ListItemButton
       component="a"
       href={item.url}
-      selected={selectedId === item.url.slice(1)}
+      selected={selectedId === item.url?.slice(1)}
     >
       <HeaderListItemText primary={item.title} />
     </ListItemButton>
