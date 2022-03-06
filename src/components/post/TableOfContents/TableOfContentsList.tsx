@@ -22,7 +22,7 @@ const TableOfContentsList = ({
       sx={nestedHead && { borderLeft: "1px solid lightgray" }}
     >
       {items?.map((item) => (
-        <TableOfContentsItem key={item.url} item={item} />
+        <TableOfContentsItem key={item.url} item={item} selected={false} />
       ))}
     </NestedList>
   );

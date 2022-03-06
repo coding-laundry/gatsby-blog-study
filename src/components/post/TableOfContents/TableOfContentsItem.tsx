@@ -11,13 +11,14 @@ const TableStack = styled(Stack)`
 
 interface TableOfContentsItemProps {
   item: TableItem;
+  selected: boolean;
 }
 
-const TableOfContentsItem = ({ item }: TableOfContentsItemProps) => {
+const TableOfContentsItem = ({ item, selected }: TableOfContentsItemProps) => {
   return (
     <ListItem disableGutters>
       <TableStack>
-        <TableOfContentsItemButton item={item} />
+        <TableOfContentsItemButton item={item} selected={selected} />
         {item.items && <TableOfContentsList items={item.items} />}
       </TableStack>
     </ListItem>
