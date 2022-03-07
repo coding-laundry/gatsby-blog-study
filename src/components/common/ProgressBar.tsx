@@ -9,7 +9,7 @@ interface ProgressBarProps {
 const StyledProgressBar = styled.div<ProgressBarProps>`
   position: fixed;
   top: 0;
-  height: 3px;
+  height: 5px;
   width: ${({ progress }) => (progress ? `${progress}%` : "0%")};
   background-color: #5352ed;
   z-index: 9999;
