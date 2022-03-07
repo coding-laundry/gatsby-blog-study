@@ -39,13 +39,6 @@ module.exports = {
       __key: "blogs",
     },
     {
-      resolve: "gatsby-source-filesystem",
-      options: {
-        name: "about",
-        path: "./content/about",
-      },
-    },
-    {
       resolve: `gatsby-plugin-mdx`,
       options: {
         gatsbyRemarkPlugins: [
