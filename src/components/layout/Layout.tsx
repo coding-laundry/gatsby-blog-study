@@ -10,7 +10,7 @@ type LayoutProps = {
 };
 
 const Layout = ({ children }: LayoutProps) => {
-  const theme = useCustomTheme("dark");
+  const { theme, toggleMode } = useCustomTheme();
 
   return (
     <ThemeProvider theme={theme}>

@@ -1,7 +1,15 @@
+import { useState } from "react";
 import { createTheme } from "@mui/material";
 import { grey } from "@mui/material/colors";
 
-export const useCustomTheme = (mode: "light" | "dark" = "light") => {
+const MODE_KEY = "mode";
+
+type ModeType = "light" | "dark";
+
+export const useCustomTheme = () => {
+  const storedMode = localStorage.getItem(MODE_KEY) as ModeType;
+  const [mode, setMode] = useState<ModeType>(storedMode ?? "light");
+
   const commonTheme = {
     typography: {
       fontFamily: `Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto,
@@ -24,5 +32,10 @@ export const useCustomTheme = (mode: "light" | "dark" = "light") => {
     ...commonTheme,
   });
 
-  return theme;
+  const toggleMode = () => {
+    setMode((mode) => (mode === "light" ? "dark" : "light"));
+    localStorage.setItem(MODE_KEY, mode);
+  };
+
+  return { theme, toggleMode };
 };
