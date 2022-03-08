@@ -6,9 +6,9 @@ import PostList from "../components/post/PostList";
 import Layout from "../components/layout/Layout";
 import ContentsLayout from "../components/layout/ContentsLayout";
 
-type IndexPageProps = {
+interface IndexPageProps {
   data: AllMarkdown;
-};
+}
 
 const IndexPage = ({ data }: IndexPageProps) => {
   const { edges: posts } = data.allMdx;

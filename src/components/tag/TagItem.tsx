@@ -2,9 +2,9 @@ import { Chip } from "@mui/material";
 import { navigate } from "gatsby";
 import React from "react";
 
-type TagItemProps = {
+interface TagItemProps {
   name: string;
-};
+}
 
 const TagItem = ({ name }: TagItemProps) => {
   const onClickTagItem = () => {

@@ -7,11 +7,11 @@ import {
 import { Link } from "gatsby";
 import React from "react";
 
-type CategoryItemProps = {
+interface CategoryItemProps {
   name: string;
   count: number;
   isSelected?: boolean;
-};
+}
 
 const CategoryItem = ({
   name,

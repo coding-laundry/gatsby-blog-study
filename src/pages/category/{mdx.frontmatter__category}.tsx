@@ -6,12 +6,12 @@ import Layout from "../../components/layout/Layout";
 import PostList from "../../components/post/PostList";
 import { AllMarkdown } from "../../types/postTypes";
 
-type CategoryDetailPageProps = {
+interface CategoryDetailPageProps {
   params: {
     frontmatter__category: string;
   };
   data: AllMarkdown;
-};
+}
 
 const CategoryDetailPage = ({ params, data }: CategoryDetailPageProps) => {
   const selectedCategory = params.frontmatter__category;

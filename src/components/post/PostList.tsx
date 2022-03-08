@@ -8,9 +8,9 @@ const PostStack = styled(Stack)`
   min-height: 50vh;
 `;
 
-type PostListProps = {
+interface PostListProps {
   posts: { node: PostNode }[];
-};
+}
 
 const PostList = ({ posts }: PostListProps) => {
   return (

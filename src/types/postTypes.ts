@@ -1,41 +1,41 @@
 import { IGatsbyImageData } from "gatsby-plugin-image";
 
-export type AllMarkdown = {
+export interface AllMarkdown {
   allMdx: {
     edges: { node: PostNode }[];
   };
-};
+}
 
-export type PostNode = {
+export interface PostNode {
   frontmatter: PostFrontmatter;
   id: string;
   slug: string;
   excerpt?: string;
   body?: string;
   tableOfContents?: PostTableOfContents;
-};
+}
 
-export type PostFrontmatter = {
+export interface PostFrontmatter {
   title: string;
   tags: string[];
   date: string;
   category: string;
   thumbnail: GatsbyThumbnail;
-};
+}
 
-export type GatsbyThumbnail = {
+export interface GatsbyThumbnail {
   childImageSharp: {
     gatsbyImageData: IGatsbyImageData;
   };
   publicURL?: string;
-};
+}
 
-export type PostTableOfContents = {
+export interface PostTableOfContents {
   items: TableItem[];
-};
+}
 
-export type TableItem = {
+export interface TableItem {
   url: string;
   title: string;
   items: TableItem[];
-};
+}

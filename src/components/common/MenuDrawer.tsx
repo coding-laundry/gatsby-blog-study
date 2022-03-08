@@ -26,14 +26,14 @@ const ProfileListItem = styled(ListItem)`
   text-align: center;
 `;
 
-type MenuDrawerProps = {
+interface MenuDrawerProps {
   isOpen: boolean;
   onCloseDrawer: () => void;
-};
+}
 
-type ListTableType = {
+interface ListTableType {
   [key: string]: JSX.Element;
-};
+}
 
 const MenuDrawer = ({ isOpen, onCloseDrawer }: MenuDrawerProps) => {
   const listTable: ListTableType = {

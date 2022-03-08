@@ -44,9 +44,9 @@ const CardThumbnail = styled(GatsbyImage)`
   }
 `;
 
-type PostItemProps = {
+interface PostItemProps {
   post: PostNode;
-};
+}
 
 const PostItem = ({ post }: PostItemProps) => {
   const { title, date, tags, category, thumbnail } = post.frontmatter;

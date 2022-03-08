@@ -5,9 +5,9 @@ import Footer from "../common/Footer";
 import Header from "../common/Header";
 import Profile from "../common/Profile";
 
-type LayoutProps = {
+interface LayoutProps {
   children: React.ReactNode;
-};
+}
 
 const Layout = ({ children }: LayoutProps) => {
   const { theme, toggleMode } = useCustomTheme();

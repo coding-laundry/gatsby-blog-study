@@ -2,9 +2,9 @@ import { Stack } from "@mui/material";
 import React from "react";
 import TagItem from "./TagItem";
 
-type TagsProps = {
+interface TagsProps {
   tags: string[];
-};
+}
 
 const Tags = ({ tags }: TagsProps) => {
   return (

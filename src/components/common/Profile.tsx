@@ -34,9 +34,11 @@ const ProfileName = styled(Typography)`
   }
 `;
 
-type ProfileImageProps = { direction: string };
+interface ProfileImageProps {
+  direction: string;
+}
 
-type ProfileDataQuery = {
+interface ProfileDataQuery {
   file: {
     name: string;
   } & GatsbyThumbnail;
@@ -50,11 +52,11 @@ type ProfileDataQuery = {
       };
     };
   };
-};
+}
 
-type ProfileProps = {
+interface ProfileProps {
   direction?: "row" | "row-reverse" | "column" | "column-reverse";
-};
+}
 
 const Profile = ({ direction = "row" }: ProfileProps) => {
   const { file, site } = useStaticQuery<ProfileDataQuery>(graphql`

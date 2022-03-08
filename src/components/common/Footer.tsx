@@ -13,13 +13,13 @@ const FooterBox = styled(Box)`
   text-align: center;
 `;
 
-type FooterDataQuery = {
+interface FooterDataQuery {
   site: {
     siteMetadata: {
       author: string;
     };
   };
-};
+}
 
 const Footer = () => {
   const { site } = useStaticQuery<FooterDataQuery>(graphql`

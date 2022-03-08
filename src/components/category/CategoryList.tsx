@@ -3,18 +3,18 @@ import { graphql, Link, useStaticQuery } from "gatsby";
 import React from "react";
 import CategoryItem from "./CategoryItem";
 
-type CategoryListProps = {
+interface CategoryListProps {
   selectedCategory?: string;
-};
+}
 
-type CategoryQuery = {
+interface CategoryQuery {
   allMdx: {
     group: {
       fieldValue: string;
       totalCount: number;
     }[];
   };
-};
+}
 
 const CategoryList = ({ selectedCategory = "" }: CategoryListProps) => {
   const data = useStaticQuery<CategoryQuery>(graphql`

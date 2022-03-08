@@ -23,10 +23,10 @@ const Line = styled(Divider)`
   width: 50%;
 `;
 
-type IntroProps = {
+interface IntroProps {
   type?: string;
   selected?: string;
-};
+}
 
 const Intro = ({ type, selected }: IntroProps) => {
   return (

@@ -10,17 +10,17 @@ const TagWrapper = styled(Box)`
   flex-wrap: wrap;
 `;
 
-type TagListProps = {
+interface TagListProps {
   limit?: number;
-};
+}
 
-type TagListQuery = {
+interface TagListQuery {
   allMdx: {
     group: {
       fieldValue: string;
     }[];
   };
-};
+}
 
 const TagList = ({ limit = Infinity }: TagListProps) => {
   const data = useStaticQuery<TagListQuery>(graphql`
