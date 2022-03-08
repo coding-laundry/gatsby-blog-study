@@ -6,10 +6,18 @@ import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import MenuIcon from "@mui/icons-material/Menu";
 import SearchIcon from "@mui/icons-material/Search";
-import { Container, Slide, useScrollTrigger } from "@mui/material";
+import LightModeIcon from "@mui/icons-material/LightMode";
+import DarkModeIcon from "@mui/icons-material/DarkMode";
+import { Container, Slide, useScrollTrigger, useTheme } from "@mui/material";
+
 import MenuDrawer from "./MenuDrawer";
 import { Link } from "gatsby";
 import ProgressBar from "./ProgressBar";
+import styled from "@emotion/styled";
+
+const HeadTitleLink = styled(Link)`
+  text-align: center;
+`;
 
 const HideOnScroll = ({ children }) => {
   const trigger = useScrollTrigger();
@@ -21,7 +29,12 @@ const HideOnScroll = ({ children }) => {
   );
 };
 
-const Header = () => {
+interface HeaderProps {
+  toggleMode: () => void;
+}
+
+const Header = ({ toggleMode }: HeaderProps) => {
+  const theme = useTheme();
   const [isOpenDrawer, setIsOpenDrawer] = useState(false);
 
   const onOpenDrawer = () => setIsOpenDrawer(true);
@@ -44,15 +57,27 @@ const Header = () => {
                 component="h2"
                 variant="h6"
                 noWrap
-                sx={{ flexGrow: 1, textAlign: "center", fontWeight: "bold" }}
+                sx={{
+                  flexGrow: 1,
+                  textAlign: "center",
+                  fontWeight: "bold",
+                }}
               >
-                <Link to="/">My Gatsby Blog</Link>
+                {/* <HeadTitleLink to="/">My Gatsby Blog</HeadTitleLink> */}
+                My Gatsby Blog
               </Typography>
               <Link to="/search">
                 <IconButton aria-label="검색하기">
                   <SearchIcon sx={{ fontSize: 32 }} />
                 </IconButton>
               </Link>
+              <IconButton aria-label="테마 변경" onClick={toggleMode}>
+                {theme.palette.mode === "light" ? (
+                  <LightModeIcon sx={{ fontSize: 32 }} />
+                ) : (
+                  <DarkModeIcon sx={{ fontSize: 32 }} />
+                )}
+              </IconButton>
             </Toolbar>
           </Container>
         </AppBar>

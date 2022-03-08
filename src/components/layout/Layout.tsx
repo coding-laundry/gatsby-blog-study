@@ -20,7 +20,7 @@ const Layout = ({ children }: LayoutProps) => {
           color: "text.primary",
         }}
       >
-        <Header />
+        <Header toggleMode={toggleMode} />
         {children}
 
         <Container component="section">

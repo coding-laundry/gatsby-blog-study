@@ -33,8 +33,11 @@ export const useCustomTheme = () => {
   });
 
   const toggleMode = () => {
-    setMode((mode) => (mode === "light" ? "dark" : "light"));
-    localStorage.setItem(MODE_KEY, mode);
+    setMode((mode) => {
+      const nextMode = mode === "light" ? "dark" : "light";
+      localStorage.setItem(MODE_KEY, nextMode);
+      return nextMode;
+    });
   };
 
   return { theme, toggleMode };
