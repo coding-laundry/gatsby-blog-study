@@ -27,7 +27,8 @@ const UtteranceComments = () => {
     commentRef.current.appendChild(utteranceScript);
 
     return () => {
-      document.querySelector("div.utterances").remove();
+      const comment = document.querySelector("div.utterances");
+      comment && comment.remove();
     };
   }, [theme.palette.mode]);
 
