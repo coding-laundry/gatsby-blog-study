@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { createTheme } from "@mui/material";
 import { grey } from "@mui/material/colors";
 
@@ -7,8 +7,8 @@ export const MODE_KEY = "mode";
 type ModeType = "light" | "dark";
 
 export const useCustomTheme = () => {
-  const storedMode = localStorage.getItem(MODE_KEY) as ModeType;
-  const [mode, setMode] = useState<ModeType>(storedMode ?? "light");
+  const storedMode = useRef<ModeType>("light");
+  const [mode, setMode] = useState<ModeType>(storedMode.current);
 
   const commonTheme = {
     typography: {
@@ -17,6 +17,11 @@ export const useCustomTheme = () => {
       "Malgun Gothic", sans-serif`,
     },
   };
+
+  useEffect(() => {
+    storedMode.current = localStorage.getItem(MODE_KEY) as ModeType;
+    setMode(storedMode.current);
+  }, []);
 
   const theme = createTheme({
     palette: {
