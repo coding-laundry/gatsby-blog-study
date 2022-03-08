@@ -30,7 +30,7 @@ const UtteranceComments = () => {
       const comment = document.querySelector("div.utterances");
       comment && comment.remove();
     };
-  }, [theme.palette.mode]);
+  }, [localStorage.getItem(MODE_KEY)]);
 
   return <div ref={commentRef}></div>;
 };
