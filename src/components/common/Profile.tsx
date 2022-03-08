@@ -27,6 +27,7 @@ const ProfileName = styled(Typography)`
   margin-bottom: 5px;
   border-radius: 8px;
   transition: transform 0.2s;
+  color: black;
 
   &:hover {
     transform: scale(1.1);

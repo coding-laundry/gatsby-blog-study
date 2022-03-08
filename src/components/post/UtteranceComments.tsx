@@ -1,17 +1,21 @@
+import { useTheme } from "@mui/material";
 import React, { useEffect, useRef } from "react";
+import { MODE_KEY } from "../../hooks/useCustomTheme";
 
 const UtteranceComments = () => {
   const commentRef = useRef<HTMLDivElement>(null);
+  const theme = useTheme();
 
   useEffect(() => {
     const utteranceScript = document.createElement("script");
+    const theme = localStorage.getItem(MODE_KEY) || "light";
 
     const attributes = {
       src: "https://utteranc.es/client.js",
       repo: "coding-laundry/gatsby-blog-study",
       "issue-term": "pathname",
       label: "💬",
-      theme: "github-light",
+      theme: `github-${theme}`,
       crossorigin: "anonymous",
       async: "true",
     };
@@ -21,7 +25,11 @@ const UtteranceComments = () => {
     });
 
     commentRef.current.appendChild(utteranceScript);
-  }, []);
+
+    return () => {
+      document.querySelector("div.utterances").remove();
+    };
+  }, [theme.palette.mode]);
 
   return <div ref={commentRef}></div>;
 };

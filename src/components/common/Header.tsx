@@ -8,15 +8,20 @@ import MenuIcon from "@mui/icons-material/Menu";
 import SearchIcon from "@mui/icons-material/Search";
 import LightModeIcon from "@mui/icons-material/LightMode";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
-import { Container, Slide, useScrollTrigger, useTheme } from "@mui/material";
-
+import {
+  Container,
+  Slide,
+  styled,
+  useScrollTrigger,
+  useTheme,
+} from "@mui/material";
 import MenuDrawer from "./MenuDrawer";
 import { Link } from "gatsby";
 import ProgressBar from "./ProgressBar";
-import styled from "@emotion/styled";
 
 const HeadTitleLink = styled(Link)`
   text-align: center;
+  color: ${({ theme }) => `${theme.palette.text.primary}`};
 `;
 
 const HideOnScroll = ({ children }) => {
@@ -63,8 +68,8 @@ const Header = ({ toggleMode }: HeaderProps) => {
                   fontWeight: "bold",
                 }}
               >
-                {/* <HeadTitleLink to="/">My Gatsby Blog</HeadTitleLink> */}
-                My Gatsby Blog
+                <HeadTitleLink to="/">My Gatsby Blog</HeadTitleLink>
+                {/* My Gatsby Blog */}
               </Typography>
               <Link to="/search">
                 <IconButton aria-label="검색하기">

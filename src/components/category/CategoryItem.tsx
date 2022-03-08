@@ -1,4 +1,9 @@
-import { ListItem, ListItemButton, ListItemText } from "@mui/material";
+import {
+  ListItem,
+  ListItemButton,
+  ListItemText,
+  Typography,
+} from "@mui/material";
 import { Link } from "gatsby";
 import React from "react";
 
@@ -16,7 +21,12 @@ const CategoryItem = ({
   const linkSeparator = name === "all" ? "/" : `/category/${name}`;
   return (
     <Link to={linkSeparator}>
-      <ListItem disablePadding secondaryAction={count}>
+      <ListItem
+        disablePadding
+        secondaryAction={
+          <Typography sx={{ color: "text.primary" }}>{count}</Typography>
+        }
+      >
         <ListItemButton selected={isSelected}>
           <ListItemText primary={`${name.toUpperCase()}`} />
         </ListItemButton>

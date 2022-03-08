@@ -2,7 +2,7 @@ import { useState } from "react";
 import { createTheme } from "@mui/material";
 import { grey } from "@mui/material/colors";
 
-const MODE_KEY = "mode";
+export const MODE_KEY = "mode";
 
 type ModeType = "light" | "dark";
 
