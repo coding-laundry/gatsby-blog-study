@@ -5,12 +5,12 @@ import { useObserver } from "../../hooks/useObserver";
 
 const UtteranceComments = () => {
   const commentRef = useRef<HTMLDivElement>(null);
-  const { active, setElementId } = useObserver(commentRef.current?.id);
+  const { active, setElement } = useObserver(commentRef.current);
   const theme = useTheme();
   const { mode } = theme.palette;
 
   useEffect(() => {
-    setElementId(commentRef.current?.id);
+    setElement(commentRef.current);
     if (!active) return;
 
     const utteranceScript = document.createElement("script");
@@ -38,7 +38,7 @@ const UtteranceComments = () => {
     };
   }, [mode, active]);
 
-  return <div id="comment" ref={commentRef}></div>;
+  return <div ref={commentRef}></div>;
 };
 
 export default UtteranceComments;

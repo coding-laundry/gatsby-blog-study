@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 
-export const useObserver = (defaultId: string) => {
-  const [elementId, setElementId] = useState(defaultId);
+export const useObserver = (defaultElement: HTMLElement) => {
+  const [element, setElement] = useState(defaultElement);
   const [active, setActive] = useState(false);
   const observerRef = useRef<IntersectionObserver>(null);
 
@@ -17,14 +17,14 @@ export const useObserver = (defaultId: string) => {
   }, []);
 
   useEffect(() => {
-    if (!elementId) return;
+    if (!element) return;
 
-    observerRef.current.observe(document.getElementById(elementId));
+    observerRef.current.observe(element);
     return () => {
       observerRef.current.disconnect();
       setActive(false);
     };
-  }, [elementId]);
+  }, [element]);
 
-  return { active, setElementId };
+  return { active, setElement };
 };
