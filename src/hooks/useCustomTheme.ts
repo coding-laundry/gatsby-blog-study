@@ -4,7 +4,7 @@ import { grey } from "@mui/material/colors";
 
 export const MODE_KEY = "mode";
 
-type ModeType = "light" | "dark";
+export type ModeType = "light" | "dark";
 
 export const useCustomTheme = () => {
   const storedMode = useRef<ModeType>("light");
