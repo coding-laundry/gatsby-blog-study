@@ -15,6 +15,12 @@ module.exports = {
     `gatsby-remark-images`,
     `gatsby-plugin-sass`,
     {
+      resolve: "gatsby-plugin-use-dark-mode",
+      options: {
+        minify: true,
+      },
+    },
+    {
       resolve: "gatsby-source-filesystem",
       options: {
         name: "images",

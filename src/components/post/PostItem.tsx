@@ -1,5 +1,4 @@
 import { Card, Typography, CardContent, styled, Box } from "@mui/material";
-import { navigate } from "gatsby";
 import { Link } from "gatsby";
 import { GatsbyImage } from "gatsby-plugin-image";
 import React from "react";
