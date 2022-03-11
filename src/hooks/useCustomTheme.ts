@@ -6,24 +6,8 @@ export const MODE_KEY = "mode";
 
 export type ModeType = "light" | "dark";
 
-export const useCustomTheme = () => {
-  const storedMode = useRef<ModeType>("light");
-  const [mode, setMode] = useState<ModeType>(storedMode.current);
-
-  const commonTheme = {
-    typography: {
-      fontFamily: `Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto,
-      "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR",
-      "Malgun Gothic", sans-serif`,
-    },
-  };
-
-  useEffect(() => {
-    storedMode.current = localStorage.getItem(MODE_KEY) as ModeType;
-    setMode(storedMode.current);
-  }, []);
-
-  const theme = createTheme({
+export const createCustomTheme = (mode: ModeType) =>
+  createTheme({
     palette: {
       mode,
       ...(mode === "dark" && {
@@ -34,8 +18,21 @@ export const useCustomTheme = () => {
         },
       }),
     },
-    ...commonTheme,
+    typography: {
+      fontFamily: `Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto,
+    "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR",
+    "Malgun Gothic", sans-serif`,
+    },
   });
+
+export const useCustomTheme = () => {
+  const storedMode = useRef<ModeType>("light");
+  const [mode, setMode] = useState<ModeType>(storedMode.current);
+
+  useEffect(() => {
+    storedMode.current = localStorage.getItem(MODE_KEY) as ModeType;
+    setMode(storedMode.current);
+  }, []);
 
   const toggleMode = () => {
     setMode((mode) => {
@@ -44,6 +41,8 @@ export const useCustomTheme = () => {
       return nextMode;
     });
   };
+
+  const theme = createCustomTheme(mode);
 
   return { theme, toggleMode };
 };

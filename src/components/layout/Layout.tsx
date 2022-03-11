@@ -1,5 +1,6 @@
 import { Box, Container, ThemeProvider } from "@mui/material";
 import React from "react";
+import useDarkMode from "use-dark-mode";
 import { useCustomTheme } from "../../hooks/useCustomTheme";
 import Footer from "../common/Footer";
 import Header from "../common/Header";
@@ -10,26 +11,25 @@ interface LayoutProps {
 }
 
 const Layout = ({ children }: LayoutProps) => {
-  const { theme, toggleMode } = useCustomTheme();
+  // const { theme, toggleMode } = useCustomTheme();
+  const darkMode = useDarkMode();
 
   return (
-    <ThemeProvider theme={theme}>
-      <Box
-        sx={{
-          bgcolor: "background.default",
-          color: "text.primary",
-        }}
-      >
-        <Header toggleMode={toggleMode} />
-        {children}
+    <Box
+      sx={{
+        bgcolor: "background.default",
+        color: "text.primary",
+      }}
+    >
+      <Header toggleMode={() => darkMode.toggle()} />
+      {children}
 
-        <Container component="section">
-          <Profile />
-        </Container>
+      <Container component="section">
+        <Profile />
+      </Container>
 
-        <Footer />
-      </Box>
-    </ThemeProvider>
+      <Footer />
+    </Box>
   );
 };
 
