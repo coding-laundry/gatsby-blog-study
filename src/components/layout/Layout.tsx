@@ -5,6 +5,7 @@ import { useCustomTheme } from "../../hooks/useCustomTheme";
 import Footer from "../common/Footer";
 import Header from "../common/Header";
 import Profile from "../common/Profile";
+import { ColorModeContext } from "./ThemeLayout";
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -13,6 +14,7 @@ interface LayoutProps {
 const Layout = ({ children }: LayoutProps) => {
   // const { theme, toggleMode } = useCustomTheme();
   const darkMode = useDarkMode();
+  const colorMode = React.useContext(ColorModeContext);
 
   return (
     <Box
@@ -21,7 +23,7 @@ const Layout = ({ children }: LayoutProps) => {
         color: "text.primary",
       }}
     >
-      <Header toggleMode={() => darkMode.toggle()} />
+      <Header toggleMode={colorMode.toggleColorMode} />
       {children}
 
       <Container component="section">
