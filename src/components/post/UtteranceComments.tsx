@@ -1,6 +1,5 @@
 import { useTheme } from "@mui/material";
 import React, { useEffect, useRef } from "react";
-import { MODE_KEY } from "../../hooks/useCustomTheme";
 import { useObserver } from "../../hooks/useObserver";
 
 const UtteranceComments = () => {
@@ -14,14 +13,13 @@ const UtteranceComments = () => {
     if (!active) return;
 
     const utteranceScript = document.createElement("script");
-    const userTheme = localStorage.getItem(MODE_KEY) || "light";
 
     const attributes = {
       src: "https://utteranc.es/client.js",
       repo: "coding-laundry/gatsby-blog-study",
       "issue-term": "pathname",
       label: "💬",
-      theme: `github-${userTheme}`,
+      theme: `github-${mode}`,
       crossorigin: "anonymous",
       async: "true",
     };
