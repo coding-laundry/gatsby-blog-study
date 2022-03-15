@@ -69,7 +69,6 @@ const Header = ({ toggleMode }: HeaderProps) => {
                 }}
               >
                 <HeadTitleLink to="/">My Gatsby Blog</HeadTitleLink>
-                {/* My Gatsby Blog */}
               </Typography>
               <Link to="/search">
                 <IconButton aria-label="검색하기">

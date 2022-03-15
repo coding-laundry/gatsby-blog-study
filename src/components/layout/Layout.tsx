@@ -13,12 +13,7 @@ const Layout = ({ children }: LayoutProps) => {
   const darkMode = useDarkMode();
 
   return (
-    <Box
-      sx={{
-        bgcolor: "background.default",
-        color: "text.primary",
-      }}
-    >
+    <Box>
       <Header toggleMode={() => darkMode.toggle()} />
       {children}
 

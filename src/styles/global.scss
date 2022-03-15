@@ -27,3 +27,13 @@ p {
 .utterances {
   max-width: 100%;
 }
+
+.light-mode {
+  --color-background: white;
+  --color-text: #424242;
+}
+
+.dark-mode {
+  --color-background: #282c35;
+  --color-text: white;
+}
