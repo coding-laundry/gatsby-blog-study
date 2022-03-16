@@ -9,6 +9,7 @@ export const wrapRootElement = ({ element }) => (
 export const onRenderBody = ({ setPreBodyComponents }) => {
   setPreBodyComponents([
     <script
+      key="hello"
       dangerouslySetInnerHTML={{
         __html: `(function () {
           document.body.classList.add('hello')
