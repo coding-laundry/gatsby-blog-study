@@ -21,7 +21,7 @@ const PostPagination = ({
   onChangePage,
 }: PostPaginationProps) => {
   const totalPageCount = useMemo(
-    () => Math.floor(postTotalLength / POST_PER_PAGE) + 1,
+    () => Math.ceil(postTotalLength / POST_PER_PAGE),
     [postTotalLength]
   );
 
