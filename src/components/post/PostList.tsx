@@ -34,7 +34,10 @@ const PostList = ({ posts }: PostListProps) => {
       <PostStack spacing={2}>
         {posts &&
           posts
-            ?.slice(1 - currentPage, POST_PER_PAGE * currentPage)
+            ?.slice(
+              POST_PER_PAGE * (currentPage - 1),
+              POST_PER_PAGE * currentPage
+            )
             .map(({ node }) => <PostItem key={node.id} post={node} />)}
       </PostStack>
       {posts && (
