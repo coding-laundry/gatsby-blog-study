@@ -13,24 +13,16 @@ interface SearchIndexProps {
 const SearchIndex = ({ location, data }: PageProps & SearchIndexProps) => {
   const { search } = location;
 
-  const qs = useMemo(
-    () =>
-      search
-        .slice(1)
-        .split("&")
-        .reduce((acc, cur) => {
-          const [key, value] = cur.split("=");
-          acc[key] = decodeURIComponent(value);
-          return acc;
-        }, {}),
+  const queryString = useMemo(
+    () => new URLSearchParams(search).get("q"),
     [search]
   );
 
   return (
     <Layout>
-      <Intro type="Search" selected={qs["q"]} />
+      <Intro type="Search" selected={queryString} />
       <ContentsLayout>
-        <SearchResultContainer query={qs["q"]} data={data} />
+        <SearchResultContainer query={queryString} data={data} />
       </ContentsLayout>
     </Layout>
   );
