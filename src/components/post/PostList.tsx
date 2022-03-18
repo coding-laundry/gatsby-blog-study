@@ -14,9 +14,10 @@ const PostStack = styled(Stack)`
 
 interface PostListProps {
   posts: { node: PostNode }[];
+  postLimit?: number;
 }
 
-const PostList = ({ posts }: PostListProps) => {
+const PostList = ({ posts, postLimit = POST_PER_PAGE }: PostListProps) => {
   const [currentPage, setCurrentPage] = useState(1);
   const isWindow = typeof window !== "undefined";
 
@@ -34,14 +35,12 @@ const PostList = ({ posts }: PostListProps) => {
       <PostStack spacing={2}>
         {posts &&
           posts
-            ?.slice(
-              POST_PER_PAGE * (currentPage - 1),
-              POST_PER_PAGE * currentPage
-            )
+            ?.slice(postLimit * (currentPage - 1), postLimit * currentPage)
             .map(({ node }) => <PostItem key={node.id} post={node} />)}
       </PostStack>
       {posts && (
         <PostPagination
+          postLimit={postLimit}
           postTotalLength={posts.length}
           currentPage={currentPage}
         />

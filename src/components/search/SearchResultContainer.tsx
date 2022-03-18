@@ -48,7 +48,7 @@ const SearchResultContainer = ({ query, data }: SearchResultContainer) => {
   return (
     <Box>
       <SearchInput onChange={onChangeInput} value={value} />
-      <PostList posts={posts} />
+      <PostList posts={posts} postLimit={Infinity} />
     </Box>
   );
 };

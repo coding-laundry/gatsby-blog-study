@@ -40,10 +40,7 @@ export default SearchIndex;
 
 export const query = graphql`
   query {
-    allMdx(
-      filter: { fields: { source: { eq: "blog" } } }
-      sort: { fields: frontmatter___date, order: DESC }
-    ) {
+    allMdx(sort: { fields: frontmatter___date, order: DESC }) {
       edges {
         node {
           frontmatter {
