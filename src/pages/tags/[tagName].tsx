@@ -1,8 +1,9 @@
-import { graphql } from "gatsby";
+import { graphql, PageProps } from "gatsby";
 import React, { useEffect, useState } from "react";
 import Intro from "../../components/common/Intro";
 import ContentsLayout from "../../components/layout/ContentsLayout";
 import Layout from "../../components/layout/Layout";
+import Metadata from "../../components/meta/Metadata";
 import PostList from "../../components/post/PostList";
 import { AllMarkdown } from "../../types/postTypes";
 
@@ -11,7 +12,11 @@ type TagDetailPageProps = {
   data: AllMarkdown;
 };
 
-const TagsDetailPage = ({ tagName, data }: TagDetailPageProps) => {
+const TagsDetailPage = ({
+  tagName,
+  data,
+  location,
+}: TagDetailPageProps & PageProps) => {
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
@@ -22,12 +27,15 @@ const TagsDetailPage = ({ tagName, data }: TagDetailPageProps) => {
   }, [tagName]);
 
   return (
-    <Layout>
-      <Intro type="tag" selected={`#${tagName}`} />
-      <ContentsLayout>
-        <PostList posts={posts} />
-      </ContentsLayout>
-    </Layout>
+    <>
+      <Metadata title={`Tag - ${tagName}`} link={location.href} />
+      <Layout>
+        <Intro type="tag" selected={`#${tagName}`} />
+        <ContentsLayout>
+          <PostList posts={posts} />
+        </ContentsLayout>
+      </Layout>
+    </>
   );
 };
 

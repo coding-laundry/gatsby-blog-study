@@ -3,6 +3,7 @@ import React, { useMemo } from "react";
 import Intro from "../../components/common/Intro";
 import ContentsLayout from "../../components/layout/ContentsLayout";
 import Layout from "../../components/layout/Layout";
+import Metadata from "../../components/meta/Metadata";
 import SearchResultContainer from "../../components/search/SearchResultContainer";
 import { AllMarkdown } from "../../types/postTypes";
 
@@ -19,12 +20,18 @@ const SearchIndex = ({ location, data }: PageProps & SearchIndexProps) => {
   );
 
   return (
-    <Layout>
-      <Intro type="Search" selected={queryString} />
-      <ContentsLayout>
-        <SearchResultContainer query={queryString} data={data} />
-      </ContentsLayout>
-    </Layout>
+    <>
+      <Metadata
+        title={queryString ? `Search - ${queryString}` : "Search"}
+        link={location.href}
+      />
+      <Layout>
+        <Intro type="Search" selected={queryString} />
+        <ContentsLayout>
+          <SearchResultContainer query={queryString} data={data} />
+        </ContentsLayout>
+      </Layout>
+    </>
   );
 };
 

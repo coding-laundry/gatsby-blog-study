@@ -1,8 +1,9 @@
-import { graphql } from "gatsby";
+import { graphql, PageProps } from "gatsby";
 import React from "react";
 import Intro from "../../components/common/Intro";
 import ContentsLayout from "../../components/layout/ContentsLayout";
 import Layout from "../../components/layout/Layout";
+import Metadata from "../../components/meta/Metadata";
 import PostList from "../../components/post/PostList";
 import { AllMarkdown } from "../../types/postTypes";
 
@@ -13,16 +14,23 @@ interface CategoryDetailPageProps {
   data: AllMarkdown;
 }
 
-const CategoryDetailPage = ({ params, data }: CategoryDetailPageProps) => {
+const CategoryDetailPage = ({
+  params,
+  data,
+  location,
+}: CategoryDetailPageProps & PageProps) => {
   const selectedCategory = params.frontmatter__category;
   const { edges: posts } = data.allMdx;
   return (
-    <Layout>
-      <Intro type="category" selected={selectedCategory} />
-      <ContentsLayout selectedCategory={selectedCategory}>
-        <PostList posts={posts} />
-      </ContentsLayout>
-    </Layout>
+    <>
+      <Metadata title={`Category - ${selectedCategory}`} link={location.href} />
+      <Layout>
+        <Intro type="category" selected={selectedCategory} />
+        <ContentsLayout selectedCategory={selectedCategory}>
+          <PostList posts={posts} />
+        </ContentsLayout>
+      </Layout>
+    </>
   );
 };
 
