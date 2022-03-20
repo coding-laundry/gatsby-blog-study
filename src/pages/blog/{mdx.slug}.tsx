@@ -18,11 +18,13 @@ interface PostTemplateProps {
 const PostTemplate = ({ data, location }: PostTemplateProps & PageProps) => {
   const { frontmatter, body, tableOfContents } = data.mdx;
 
+  console.log("location :>> ", location);
   return (
     <>
       <Metadata
         title={`${frontmatter.title} | Caesiumy's Devlog'`}
         link={location.href}
+        thumbnail={location.origin + frontmatter.thumbnail.publicURL}
       />
       <Layout>
         <ContentsLayout tableOfContents={tableOfContents}>
@@ -51,6 +53,7 @@ export const query = graphql`
           childImageSharp {
             gatsbyImageData(width: 512)
           }
+          publicURL
         }
       }
       body
