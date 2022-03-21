@@ -49,6 +49,7 @@
     "use-dark-mode": "^2.3.1"
   },
   "devDependencies": {
-    "@types/lodash.throttle": "^4.1.6"
+    "@types/lodash.throttle": "^4.1.6",
+    "@types/react-helmet": "^6.1.5"
   }
 }

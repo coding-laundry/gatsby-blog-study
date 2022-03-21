@@ -11,8 +11,7 @@ export const onRenderBody = ({ setPreBodyComponents }) => {
     <script
       key="hello"
       dangerouslySetInnerHTML={{
-        __html: `(function () {
-          document.body.classList.add('hello')
+        __html: `(function () {          
         })();`,
       }}
     />,
