@@ -1,5 +1,4 @@
 import styled from "@emotion/styled";
-import { Box } from "@mui/material";
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
 import Stack from "@mui/material/Stack";

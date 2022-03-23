@@ -11,7 +11,7 @@ const HoverCard = styled(Card)`
 
   &:hover {
     transform: scale(1.01);
-    box-shadow: 6px 6px 0 0 rgba(0, 0, 0, 0.12);
+    box-shadow: 6px 6px 0 0 rgba(83, 82, 237, 0.4);
   }
 `;
 

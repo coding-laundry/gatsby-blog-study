@@ -10,6 +10,13 @@ export const createCustomTheme = (mode: ModeType) =>
   createTheme({
     palette: {
       mode,
+      primary: {
+        main: "#70a1ff",
+        contrastText: "white",
+      },
+      secondary: {
+        main: "#5352ed",
+      },
       ...(mode === "dark" && {
         divider: grey[700],
         background: {

@@ -13,6 +13,7 @@ const StyledProgressBar = styled.div<ProgressBarProps>`
   width: ${({ progress }) => (progress ? `${progress}%` : "0%")};
   background-color: #5352ed;
   z-index: 9999;
+  transition: width 0.2s ease;
 `;
 
 const ProgressBar = () => {

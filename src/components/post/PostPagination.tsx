@@ -28,7 +28,7 @@ const PostPagination = ({
     <CenteredPagination
       count={totalPageCount}
       page={currentPage}
-      color="primary"
+      color="secondary"
       renderItem={(item) => (
         <PaginationItem component={Link} to={`?page=${item.page}`} {...item} />
       )}
