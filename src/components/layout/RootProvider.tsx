@@ -2,11 +2,11 @@ import { CssBaseline, ThemeProvider } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import useDarkMode from "use-dark-mode";
 import { createCustomTheme } from "../../hooks/useCustomTheme";
-interface ThemeLayoutProps {
+interface RootProviderProps {
   children: React.ReactNode;
 }
 
-const ThemeLayout = ({ children }: ThemeLayoutProps) => {
+const RootProvider = ({ children }: RootProviderProps) => {
   const darkMode = useDarkMode();
   const [theme, setTheme] = useState(createCustomTheme("dark"));
 
@@ -22,4 +22,4 @@ const ThemeLayout = ({ children }: ThemeLayoutProps) => {
   );
 };
 
-export default ThemeLayout;
+export default RootProvider;

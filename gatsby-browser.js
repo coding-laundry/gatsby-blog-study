@@ -1,7 +1,7 @@
 import "./src/styles/global.scss";
 import React from "react";
-import ThemeLayout from "./src/components/layout/ThemeLayout.tsx";
+import RootProvider from "./src/components/layout/RootProvider.tsx";
 
 export const wrapRootElement = ({ element }) => (
-  <ThemeLayout>{element}</ThemeLayout>
+  <RootProvider>{element}</RootProvider>
 );
